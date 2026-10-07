@@ -1,7 +1,7 @@
-Image assets (src/img/*.png and the base64 data embedded in index.html)
-=======================================================================
+Image assets (img/*.webp, src/decor/*.webp and the small images embedded in index.html)
+======================================================================================
 
-The food images used in this game are from the "Fluent Emoji" project by Microsoft,
+The item images used in this game are from the "Fluent Emoji" project by Microsoft,
 3D style:
 
     https://github.com/microsoft/fluentui-emoji
@@ -31,3 +31,18 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+------------------------------------------------------------------------
+
+Item names (Traditional Chinese)
+================================
+
+The Traditional Chinese item names in src/items.json / index.html are taken from the
+Unicode CLDR emoji annotations (zh-Hant):
+
+    https://cldr.unicode.org/
+    https://github.com/unicode-org/cldr-json
+
+Copyright (c) Unicode, Inc. Distributed under the Unicode License v3
+(https://www.unicode.org/license.txt). The original 30 items from v1 keep their
+hand-picked names.

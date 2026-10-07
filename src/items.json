@@ -1,0 +1,4040 @@
+[
+{
+"n":"披薩",
+"f":"pizza",
+"g":"Food & Drink",
+"e":"Pizza"
+},
+{
+"n":"生日蛋糕",
+"f":"birthday_cake",
+"g":"Food & Drink",
+"e":"Birthday cake"
+},
+{
+"n":"西瓜",
+"f":"watermelon",
+"g":"Food & Drink",
+"e":"Watermelon"
+},
+{
+"n":"吐司",
+"f":"bread",
+"g":"Food & Drink",
+"e":"Bread"
+},
+{
+"n":"甜甜圈",
+"f":"doughnut",
+"g":"Food & Drink",
+"e":"Doughnut"
+},
+{
+"n":"香蕉",
+"f":"banana",
+"g":"Food & Drink",
+"e":"Banana"
+},
+{
+"n":"起司",
+"f":"cheese_wedge",
+"g":"Food & Drink",
+"e":"Cheese wedge"
+},
+{
+"n":"漢堡",
+"f":"hamburger",
+"g":"Food & Drink",
+"e":"Hamburger"
+},
+{
+"n":"可頌",
+"f":"croissant",
+"g":"Food & Drink",
+"e":"Croissant"
+},
+{
+"n":"雞腿",
+"f":"poultry_leg",
+"g":"Food & Drink",
+"e":"Poultry leg"
+},
+{
+"n":"熱狗",
+"f":"hot_dog",
+"g":"Food & Drink",
+"e":"Hot dog"
+},
+{
+"n":"紅蘋果",
+"f":"red_apple",
+"g":"Food & Drink",
+"e":"Red apple"
+},
+{
+"n":"酪梨",
+"f":"avocado",
+"g":"Food & Drink",
+"e":"Avocado"
+},
+{
+"n":"鳳梨",
+"f":"pineapple",
+"g":"Food & Drink",
+"e":"Pineapple"
+},
+{
+"n":"草莓",
+"f":"strawberry",
+"g":"Food & Drink",
+"e":"Strawberry"
+},
+{
+"n":"紅蘿蔔",
+"f":"carrot",
+"g":"Food & Drink",
+"e":"Carrot"
+},
+{
+"n":"茄子",
+"f":"eggplant",
+"g":"Food & Drink",
+"e":"Eggplant"
+},
+{
+"n":"壽司",
+"f":"sushi",
+"g":"Food & Drink",
+"e":"Sushi"
+},
+{
+"n":"塔可",
+"f":"taco",
+"g":"Food & Drink",
+"e":"Taco"
+},
+{
+"n":"餅乾",
+"f":"cookie",
+"g":"Food & Drink",
+"e":"Cookie"
+},
+{
+"n":"西洋梨",
+"f":"pear",
+"g":"Food & Drink",
+"e":"Pear"
+},
+{
+"n":"檸檬",
+"f":"lemon",
+"g":"Food & Drink",
+"e":"Lemon"
+},
+{
+"n":"法國麵包",
+"f":"baguette_bread",
+"g":"Food & Drink",
+"e":"Baguette bread"
+},
+{
+"n":"椒鹽卷餅",
+"f":"pretzel",
+"g":"Food & Drink",
+"e":"Pretzel"
+},
+{
+"n":"飯糰",
+"f":"rice_ball",
+"g":"Food & Drink",
+"e":"Rice ball"
+},
+{
+"n":"三明治",
+"f":"sandwich",
+"g":"Food & Drink",
+"e":"Sandwich"
+},
+{
+"n":"花椰菜",
+"f":"broccoli",
+"g":"Food & Drink",
+"e":"Broccoli"
+},
+{
+"n":"月餅",
+"f":"moon_cake",
+"g":"Food & Drink",
+"e":"Moon cake"
+},
+{
+"n":"寶石",
+"f":"gem_stone",
+"g":"Objects",
+"e":"Gem stone"
+},
+{
+"n":"泰迪熊",
+"f":"teddy_bear",
+"g":"Activities",
+"e":"Teddy bear"
+},
+{
+"n":"陶罐",
+"f":"amphora",
+"g":"Food & Drink",
+"e":"Amphora"
+},
+{
+"n":"奶瓶",
+"f":"baby_bottle",
+"g":"Food & Drink",
+"e":"Baby bottle"
+},
+{
+"n":"培根",
+"f":"bacon",
+"g":"Food & Drink",
+"e":"Bacon"
+},
+{
+"n":"貝果",
+"f":"bagel",
+"g":"Food & Drink",
+"e":"Bagel"
+},
+{
+"n":"豆子",
+"f":"beans",
+"g":"Food & Drink",
+"e":"Beans"
+},
+{
+"n":"啤酒",
+"f":"beer_mug",
+"g":"Food & Drink",
+"e":"Beer mug"
+},
+{
+"n":"甜椒",
+"f":"bell_pepper",
+"g":"Food & Drink",
+"e":"Bell pepper"
+},
+{
+"n":"便當",
+"f":"bento_box",
+"g":"Food & Drink",
+"e":"Bento box"
+},
+{
+"n":"鋁箔包",
+"f":"beverage_box",
+"g":"Food & Drink",
+"e":"Beverage box"
+},
+{
+"n":"藍莓",
+"f":"blueberries",
+"g":"Food & Drink",
+"e":"Blueberries"
+},
+{
+"n":"洋酒",
+"f":"bottle_with_popping_cork",
+"g":"Food & Drink",
+"e":"Bottle with popping cork"
+},
+{
+"n":"碗和湯匙",
+"f":"bowl_with_spoon",
+"g":"Food & Drink",
+"e":"Bowl with spoon"
+},
+{
+"n":"棕色蕈菇",
+"f":"brown_mushroom",
+"g":"Food & Drink",
+"e":"Brown mushroom"
+},
+{
+"n":"珍珠奶茶",
+"f":"bubble_tea",
+"g":"Food & Drink",
+"e":"Bubble tea"
+},
+{
+"n":"捲餅",
+"f":"burrito",
+"g":"Food & Drink",
+"e":"Burrito"
+},
+{
+"n":"奶油",
+"f":"butter",
+"g":"Food & Drink",
+"e":"Butter"
+},
+{
+"n":"糖",
+"f":"candy",
+"g":"Food & Drink",
+"e":"Candy"
+},
+{
+"n":"罐頭食品",
+"f":"canned_food",
+"g":"Food & Drink",
+"e":"Canned food"
+},
+{
+"n":"櫻桃",
+"f":"cherries",
+"g":"Food & Drink",
+"e":"Cherries"
+},
+{
+"n":"栗子",
+"f":"chestnut",
+"g":"Food & Drink",
+"e":"Chestnut"
+},
+{
+"n":"巧克力",
+"f":"chocolate_bar",
+"g":"Food & Drink",
+"e":"Chocolate bar"
+},
+{
+"n":"乾杯吧",
+"f":"clinking_beer_mugs",
+"g":"Food & Drink",
+"e":"Clinking beer mugs"
+},
+{
+"n":"乾杯",
+"f":"clinking_glasses",
+"g":"Food & Drink",
+"e":"Clinking glasses"
+},
+{
+"n":"雞尾酒",
+"f":"cocktail_glass",
+"g":"Food & Drink",
+"e":"Cocktail glass"
+},
+{
+"n":"椰子",
+"f":"coconut",
+"g":"Food & Drink",
+"e":"Coconut"
+},
+{
+"n":"米飯",
+"f":"cooked_rice",
+"g":"Food & Drink",
+"e":"Cooked rice"
+},
+{
+"n":"煎蛋",
+"f":"cooking",
+"g":"Food & Drink",
+"e":"Cooking"
+},
+{
+"n":"螃蟹",
+"f":"crab",
+"g":"Food & Drink",
+"e":"Crab"
+},
+{
+"n":"小黃瓜",
+"f":"cucumber",
+"g":"Food & Drink",
+"e":"Cucumber"
+},
+{
+"n":"杯子和吸管",
+"f":"cup_with_straw",
+"g":"Food & Drink",
+"e":"Cup with straw"
+},
+{
+"n":"杯子蛋糕",
+"f":"cupcake",
+"g":"Food & Drink",
+"e":"Cupcake"
+},
+{
+"n":"咖哩飯",
+"f":"curry_rice",
+"g":"Food & Drink",
+"e":"Curry rice"
+},
+{
+"n":"卡士達",
+"f":"custard",
+"g":"Food & Drink",
+"e":"Custard"
+},
+{
+"n":"肉片",
+"f":"cut_of_meat",
+"g":"Food & Drink",
+"e":"Cut of meat"
+},
+{
+"n":"糥米丸子",
+"f":"dango",
+"g":"Food & Drink",
+"e":"Dango"
+},
+{
+"n":"水餃",
+"f":"dumpling",
+"g":"Food & Drink",
+"e":"Dumpling"
+},
+{
+"n":"玉米",
+"f":"ear_of_corn",
+"g":"Food & Drink",
+"e":"Ear of corn"
+},
+{
+"n":"蛋",
+"f":"egg",
+"g":"Food & Drink",
+"e":"Egg"
+},
+{
+"n":"油炸鷹嘴豆餅",
+"f":"falafel",
+"g":"Food & Drink",
+"e":"Falafel"
+},
+{
+"n":"魚板",
+"f":"fish_cake_with_swirl",
+"g":"Food & Drink",
+"e":"Fish cake with swirl"
+},
+{
+"n":"麵餅",
+"f":"flatbread",
+"g":"Food & Drink",
+"e":"Flatbread"
+},
+{
+"n":"涮製菜餚",
+"f":"fondue",
+"g":"Food & Drink",
+"e":"Fondue"
+},
+{
+"n":"刀叉",
+"f":"fork_and_knife",
+"g":"Food & Drink",
+"e":"Fork and knife"
+},
+{
+"n":"餐具",
+"f":"fork_and_knife_with_plate",
+"g":"Food & Drink",
+"e":"Fork and knife with plate"
+},
+{
+"n":"幸運餅乾",
+"f":"fortune_cookie",
+"g":"Food & Drink",
+"e":"Fortune cookie"
+},
+{
+"n":"薯條",
+"f":"french_fries",
+"g":"Food & Drink",
+"e":"French fries"
+},
+{
+"n":"天婦羅",
+"f":"fried_shrimp",
+"g":"Food & Drink",
+"e":"Fried shrimp"
+},
+{
+"n":"大蒜",
+"f":"garlic",
+"g":"Food & Drink",
+"e":"Garlic"
+},
+{
+"n":"薑",
+"f":"ginger_root",
+"g":"Food & Drink",
+"e":"Ginger root"
+},
+{
+"n":"一杯牛奶",
+"f":"glass_of_milk",
+"g":"Food & Drink",
+"e":"Glass of milk"
+},
+{
+"n":"葡萄",
+"f":"grapes",
+"g":"Food & Drink",
+"e":"Grapes"
+},
+{
+"n":"青蘋果",
+"f":"green_apple",
+"g":"Food & Drink",
+"e":"Green apple"
+},
+{
+"n":"生菜沙拉",
+"f":"green_salad",
+"g":"Food & Drink",
+"e":"Green salad"
+},
+{
+"n":"蜂蜜",
+"f":"honey_pot",
+"g":"Food & Drink",
+"e":"Honey pot"
+},
+{
+"n":"熱飲",
+"f":"hot_beverage",
+"g":"Food & Drink",
+"e":"Hot beverage"
+},
+{
+"n":"辣椒",
+"f":"hot_pepper",
+"g":"Food & Drink",
+"e":"Hot pepper"
+},
+{
+"n":"冰塊",
+"f":"ice",
+"g":"Food & Drink",
+"e":"Ice"
+},
+{
+"n":"冰淇淋",
+"f":"ice_cream",
+"g":"Food & Drink",
+"e":"Ice cream"
+},
+{
+"n":"奇異果",
+"f":"kiwi_fruit",
+"g":"Food & Drink",
+"e":"Kiwi fruit"
+},
+{
+"n":"綠葉蔬菜",
+"f":"leafy_green",
+"g":"Food & Drink",
+"e":"Leafy green"
+},
+{
+"n":"萊姆",
+"f":"lime",
+"g":"Food & Drink",
+"e":"Lime"
+},
+{
+"n":"龍蝦",
+"f":"lobster",
+"g":"Food & Drink",
+"e":"Lobster"
+},
+{
+"n":"棒棒糖",
+"f":"lollipop",
+"g":"Food & Drink",
+"e":"Lollipop"
+},
+{
+"n":"芒果",
+"f":"mango",
+"g":"Food & Drink",
+"e":"Mango"
+},
+{
+"n":"瑪黛茶",
+"f":"mate",
+"g":"Food & Drink",
+"e":"Mate"
+},
+{
+"n":"排骨",
+"f":"meat_on_bone",
+"g":"Food & Drink",
+"e":"Meat on bone"
+},
+{
+"n":"瓜",
+"f":"melon",
+"g":"Food & Drink",
+"e":"Melon"
+},
+{
+"n":"蘑菇",
+"f":"mushroom",
+"g":"Food & Drink",
+"e":"Mushroom"
+},
+{
+"n":"關東煮",
+"f":"oden",
+"g":"Food & Drink",
+"e":"Oden"
+},
+{
+"n":"橄欖",
+"f":"olive",
+"g":"Food & Drink",
+"e":"Olive"
+},
+{
+"n":"洋蔥",
+"f":"onion",
+"g":"Food & Drink",
+"e":"Onion"
+},
+{
+"n":"牡蠣",
+"f":"oyster",
+"g":"Food & Drink",
+"e":"Oyster"
+},
+{
+"n":"鬆餅",
+"f":"pancakes",
+"g":"Food & Drink",
+"e":"Pancakes"
+},
+{
+"n":"豌豆莢",
+"f":"pea_pod",
+"g":"Food & Drink",
+"e":"Pea pod"
+},
+{
+"n":"桃子",
+"f":"peach",
+"g":"Food & Drink",
+"e":"Peach"
+},
+{
+"n":"花生",
+"f":"peanuts",
+"g":"Food & Drink",
+"e":"Peanuts"
+},
+{
+"n":"派",
+"f":"pie",
+"g":"Food & Drink",
+"e":"Pie"
+},
+{
+"n":"爆米花",
+"f":"popcorn",
+"g":"Food & Drink",
+"e":"Popcorn"
+},
+{
+"n":"火鍋",
+"f":"pot_of_food",
+"g":"Food & Drink",
+"e":"Pot of food"
+},
+{
+"n":"馬鈴薯",
+"f":"potato",
+"g":"Food & Drink",
+"e":"Potato"
+},
+{
+"n":"倒出液體",
+"f":"pouring_liquid",
+"g":"Food & Drink",
+"e":"Pouring liquid"
+},
+{
+"n":"米果",
+"f":"rice_cracker",
+"g":"Food & Drink",
+"e":"Rice cracker"
+},
+{
+"n":"烤地瓜",
+"f":"roasted_sweet_potato",
+"g":"Food & Drink",
+"e":"Roasted sweet potato"
+},
+{
+"n":"清酒",
+"f":"sake",
+"g":"Food & Drink",
+"e":"Sake"
+},
+{
+"n":"鹽",
+"f":"salt",
+"g":"Food & Drink",
+"e":"Salt"
+},
+{
+"n":"淺鍋料理",
+"f":"shallow_pan_of_food",
+"g":"Food & Drink",
+"e":"Shallow pan of food"
+},
+{
+"n":"刨冰",
+"f":"shaved_ice",
+"g":"Food & Drink",
+"e":"Shaved ice"
+},
+{
+"n":"蛋糕",
+"f":"shortcake",
+"g":"Food & Drink",
+"e":"Shortcake"
+},
+{
+"n":"蝦子",
+"f":"shrimp",
+"g":"Food & Drink",
+"e":"Shrimp"
+},
+{
+"n":"霜淇淋",
+"f":"soft_ice_cream",
+"g":"Food & Drink",
+"e":"Soft ice cream"
+},
+{
+"n":"義大利麵",
+"f":"spaghetti",
+"g":"Food & Drink",
+"e":"Spaghetti"
+},
+{
+"n":"湯匙",
+"f":"spoon",
+"g":"Food & Drink",
+"e":"Spoon"
+},
+{
+"n":"魷魚",
+"f":"squid",
+"g":"Food & Drink",
+"e":"Squid"
+},
+{
+"n":"湯麵",
+"f":"steaming_bowl",
+"g":"Food & Drink",
+"e":"Steaming bowl"
+},
+{
+"n":"薄捲餅",
+"f":"stuffed_flatbread",
+"g":"Food & Drink",
+"e":"Stuffed flatbread"
+},
+{
+"n":"外帶餐盒",
+"f":"takeout_box",
+"g":"Food & Drink",
+"e":"Takeout box"
+},
+{
+"n":"玉米粉蒸肉",
+"f":"tamale",
+"g":"Food & Drink",
+"e":"Tamale"
+},
+{
+"n":"橘子",
+"f":"tangerine",
+"g":"Food & Drink",
+"e":"Tangerine"
+},
+{
+"n":"熱茶",
+"f":"teacup_without_handle",
+"g":"Food & Drink",
+"e":"Teacup without handle"
+},
+{
+"n":"茶壺",
+"f":"teapot",
+"g":"Food & Drink",
+"e":"Teapot"
+},
+{
+"n":"番茄",
+"f":"tomato",
+"g":"Food & Drink",
+"e":"Tomato"
+},
+{
+"n":"熱帶水果飲料",
+"f":"tropical_drink",
+"g":"Food & Drink",
+"e":"Tropical drink"
+},
+{
+"n":"格子鬆餅",
+"f":"waffle",
+"g":"Food & Drink",
+"e":"Waffle"
+},
+{
+"n":"葡萄酒",
+"f":"wine_glass",
+"g":"Food & Drink",
+"e":"Wine glass"
+},
+{
+"n":"螞蟻",
+"f":"ant",
+"g":"Animals & Nature",
+"e":"Ant"
+},
+{
+"n":"小雞的臉",
+"f":"baby_chick",
+"g":"Animals & Nature",
+"e":"Baby chick"
+},
+{
+"n":"獾",
+"f":"badger",
+"g":"Animals & Nature",
+"e":"Badger"
+},
+{
+"n":"蝙蝠",
+"f":"bat",
+"g":"Animals & Nature",
+"e":"Bat"
+},
+{
+"n":"熊",
+"f":"bear",
+"g":"Animals & Nature",
+"e":"Bear"
+},
+{
+"n":"海狸",
+"f":"beaver",
+"g":"Animals & Nature",
+"e":"Beaver"
+},
+{
+"n":"甲蟲",
+"f":"beetle",
+"g":"Animals & Nature",
+"e":"Beetle"
+},
+{
+"n":"鳥",
+"f":"bird",
+"g":"Animals & Nature",
+"e":"Bird"
+},
+{
+"n":"野牛",
+"f":"bison",
+"g":"Animals & Nature",
+"e":"Bison"
+},
+{
+"n":"黑貓",
+"f":"black_cat",
+"g":"Animals & Nature",
+"e":"Black cat"
+},
+{
+"n":"黑鳥",
+"f":"blackbird",
+"g":"Animals & Nature",
+"e":"Blackbird"
+},
+{
+"n":"開花",
+"f":"blossom",
+"g":"Animals & Nature",
+"e":"Blossom"
+},
+{
+"n":"河豚",
+"f":"blowfish",
+"g":"Animals & Nature",
+"e":"Blowfish"
+},
+{
+"n":"野豬",
+"f":"boar",
+"g":"Animals & Nature",
+"e":"Boar"
+},
+{
+"n":"花束",
+"f":"bouquet",
+"g":"Animals & Nature",
+"e":"Bouquet"
+},
+{
+"n":"毛毛蟲",
+"f":"bug",
+"g":"Animals & Nature",
+"e":"Bug"
+},
+{
+"n":"蝴蝶",
+"f":"butterfly",
+"g":"Animals & Nature",
+"e":"Butterfly"
+},
+{
+"n":"仙人掌",
+"f":"cactus",
+"g":"Animals & Nature",
+"e":"Cactus"
+},
+{
+"n":"單峰駱駝",
+"f":"camel",
+"g":"Animals & Nature",
+"e":"Camel"
+},
+{
+"n":"貓",
+"f":"cat",
+"g":"Animals & Nature",
+"e":"Cat"
+},
+{
+"n":"貓頭",
+"f":"cat_face",
+"g":"Animals & Nature",
+"e":"Cat face"
+},
+{
+"n":"櫻花",
+"f":"cherry_blossom",
+"g":"Animals & Nature",
+"e":"Cherry blossom"
+},
+{
+"n":"雞",
+"f":"chicken",
+"g":"Animals & Nature",
+"e":"Chicken"
+},
+{
+"n":"松鼠",
+"f":"chipmunk",
+"g":"Animals & Nature",
+"e":"Chipmunk"
+},
+{
+"n":"蟑螂",
+"f":"cockroach",
+"g":"Animals & Nature",
+"e":"Cockroach"
+},
+{
+"n":"珊瑚",
+"f":"coral",
+"g":"Animals & Nature",
+"e":"Coral"
+},
+{
+"n":"乳牛",
+"f":"cow",
+"g":"Animals & Nature",
+"e":"Cow"
+},
+{
+"n":"牛頭",
+"f":"cow_face",
+"g":"Animals & Nature",
+"e":"Cow face"
+},
+{
+"n":"蟋蟀",
+"f":"cricket",
+"g":"Animals & Nature",
+"e":"Cricket"
+},
+{
+"n":"鱷魚",
+"f":"crocodile",
+"g":"Animals & Nature",
+"e":"Crocodile"
+},
+{
+"n":"落葉樹",
+"f":"deciduous_tree",
+"g":"Animals & Nature",
+"e":"Deciduous tree"
+},
+{
+"n":"鹿",
+"f":"deer",
+"g":"Animals & Nature",
+"e":"Deer"
+},
+{
+"n":"渡渡鳥",
+"f":"dodo",
+"g":"Animals & Nature",
+"e":"Dodo"
+},
+{
+"n":"狗",
+"f":"dog",
+"g":"Animals & Nature",
+"e":"Dog"
+},
+{
+"n":"狗頭",
+"f":"dog_face",
+"g":"Animals & Nature",
+"e":"Dog face"
+},
+{
+"n":"海豚",
+"f":"dolphin",
+"g":"Animals & Nature",
+"e":"Dolphin"
+},
+{
+"n":"驢",
+"f":"donkey",
+"g":"Animals & Nature",
+"e":"Donkey"
+},
+{
+"n":"飛鳥",
+"f":"dove",
+"g":"Animals & Nature",
+"e":"Dove"
+},
+{
+"n":"龍",
+"f":"dragon",
+"g":"Animals & Nature",
+"e":"Dragon"
+},
+{
+"n":"龍頭",
+"f":"dragon_face",
+"g":"Animals & Nature",
+"e":"Dragon face"
+},
+{
+"n":"鴨子",
+"f":"duck",
+"g":"Animals & Nature",
+"e":"Duck"
+},
+{
+"n":"老鷹",
+"f":"eagle",
+"g":"Animals & Nature",
+"e":"Eagle"
+},
+{
+"n":"大象",
+"f":"elephant",
+"g":"Animals & Nature",
+"e":"Elephant"
+},
+{
+"n":"空巢",
+"f":"empty_nest",
+"g":"Animals & Nature",
+"e":"Empty nest"
+},
+{
+"n":"常青樹",
+"f":"evergreen_tree",
+"g":"Animals & Nature",
+"e":"Evergreen tree"
+},
+{
+"n":"綿羊",
+"f":"ewe",
+"g":"Animals & Nature",
+"e":"Ewe"
+},
+{
+"n":"落葉",
+"f":"fallen_leaf",
+"g":"Animals & Nature",
+"e":"Fallen leaf"
+},
+{
+"n":"羽毛",
+"f":"feather",
+"g":"Animals & Nature",
+"e":"Feather"
+},
+{
+"n":"魚",
+"f":"fish",
+"g":"Animals & Nature",
+"e":"Fish"
+},
+{
+"n":"紅鶴",
+"f":"flamingo",
+"g":"Animals & Nature",
+"e":"Flamingo"
+},
+{
+"n":"蒼蠅",
+"f":"fly",
+"g":"Animals & Nature",
+"e":"Fly"
+},
+{
+"n":"幸運草",
+"f":"four_leaf_clover",
+"g":"Animals & Nature",
+"e":"Four leaf clover"
+},
+{
+"n":"狐狸",
+"f":"fox",
+"g":"Animals & Nature",
+"e":"Fox"
+},
+{
+"n":"青蛙",
+"f":"frog",
+"g":"Animals & Nature",
+"e":"Frog"
+},
+{
+"n":"小雞",
+"f":"front_facing_baby_chick",
+"g":"Animals & Nature",
+"e":"Front-facing baby chick"
+},
+{
+"n":"長頸鹿",
+"f":"giraffe",
+"g":"Animals & Nature",
+"e":"Giraffe"
+},
+{
+"n":"山羊",
+"f":"goat",
+"g":"Animals & Nature",
+"e":"Goat"
+},
+{
+"n":"鵝",
+"f":"goose",
+"g":"Animals & Nature",
+"e":"Goose"
+},
+{
+"n":"大猩猩",
+"f":"gorilla",
+"g":"Animals & Nature",
+"e":"Gorilla"
+},
+{
+"n":"導盲犬",
+"f":"guide_dog",
+"g":"Animals & Nature",
+"e":"Guide dog"
+},
+{
+"n":"倉鼠",
+"f":"hamster",
+"g":"Animals & Nature",
+"e":"Hamster"
+},
+{
+"n":"小雞破蛋",
+"f":"hatching_chick",
+"g":"Animals & Nature",
+"e":"Hatching chick"
+},
+{
+"n":"刺蝟",
+"f":"hedgehog",
+"g":"Animals & Nature",
+"e":"Hedgehog"
+},
+{
+"n":"草藥",
+"f":"herb",
+"g":"Animals & Nature",
+"e":"Herb"
+},
+{
+"n":"芙蓉",
+"f":"hibiscus",
+"g":"Animals & Nature",
+"e":"Hibiscus"
+},
+{
+"n":"河馬",
+"f":"hippopotamus",
+"g":"Animals & Nature",
+"e":"Hippopotamus"
+},
+{
+"n":"蜜蜂",
+"f":"honeybee",
+"g":"Animals & Nature",
+"e":"Honeybee"
+},
+{
+"n":"馬",
+"f":"horse",
+"g":"Animals & Nature",
+"e":"Horse"
+},
+{
+"n":"馬頭",
+"f":"horse_face",
+"g":"Animals & Nature",
+"e":"Horse face"
+},
+{
+"n":"風信子",
+"f":"hyacinth",
+"g":"Animals & Nature",
+"e":"Hyacinth"
+},
+{
+"n":"水母",
+"f":"jellyfish",
+"g":"Animals & Nature",
+"e":"Jellyfish"
+},
+{
+"n":"袋鼠",
+"f":"kangaroo",
+"g":"Animals & Nature",
+"e":"Kangaroo"
+},
+{
+"n":"無尾熊",
+"f":"koala",
+"g":"Animals & Nature",
+"e":"Koala"
+},
+{
+"n":"瓢蟲",
+"f":"lady_beetle",
+"g":"Animals & Nature",
+"e":"Lady beetle"
+},
+{
+"n":"隨風飄落的葉子",
+"f":"leaf_fluttering_in_wind",
+"g":"Animals & Nature",
+"e":"Leaf fluttering in wind"
+},
+{
+"n":"花豹",
+"f":"leopard",
+"g":"Animals & Nature",
+"e":"Leopard"
+},
+{
+"n":"獅子",
+"f":"lion",
+"g":"Animals & Nature",
+"e":"Lion"
+},
+{
+"n":"蜥蜴",
+"f":"lizard",
+"g":"Animals & Nature",
+"e":"Lizard"
+},
+{
+"n":"羊駝",
+"f":"llama",
+"g":"Animals & Nature",
+"e":"Llama"
+},
+{
+"n":"蓮花",
+"f":"lotus",
+"g":"Animals & Nature",
+"e":"Lotus"
+},
+{
+"n":"毛象",
+"f":"mammoth",
+"g":"Animals & Nature",
+"e":"Mammoth"
+},
+{
+"n":"楓葉",
+"f":"maple_leaf",
+"g":"Animals & Nature",
+"e":"Maple leaf"
+},
+{
+"n":"微生物",
+"f":"microbe",
+"g":"Animals & Nature",
+"e":"Microbe"
+},
+{
+"n":"猴子",
+"f":"monkey",
+"g":"Animals & Nature",
+"e":"Monkey"
+},
+{
+"n":"猴子頭",
+"f":"monkey_face",
+"g":"Animals & Nature",
+"e":"Monkey face"
+},
+{
+"n":"麋鹿",
+"f":"moose",
+"g":"Animals & Nature",
+"e":"Moose"
+},
+{
+"n":"蚊子",
+"f":"mosquito",
+"g":"Animals & Nature",
+"e":"Mosquito"
+},
+{
+"n":"小老鼠",
+"f":"mouse",
+"g":"Animals & Nature",
+"e":"Mouse"
+},
+{
+"n":"老鼠頭",
+"f":"mouse_face",
+"g":"Animals & Nature",
+"e":"Mouse face"
+},
+{
+"n":"有蛋的巢",
+"f":"nest_with_eggs",
+"g":"Animals & Nature",
+"e":"Nest with eggs"
+},
+{
+"n":"章魚",
+"f":"octopus",
+"g":"Animals & Nature",
+"e":"Octopus"
+},
+{
+"n":"猩猩",
+"f":"orangutan",
+"g":"Animals & Nature",
+"e":"Orangutan"
+},
+{
+"n":"水獺",
+"f":"otter",
+"g":"Animals & Nature",
+"e":"Otter"
+},
+{
+"n":"貓頭鷹",
+"f":"owl",
+"g":"Animals & Nature",
+"e":"Owl"
+},
+{
+"n":"公牛",
+"f":"ox",
+"g":"Animals & Nature",
+"e":"Ox"
+},
+{
+"n":"棕櫚樹",
+"f":"palm_tree",
+"g":"Animals & Nature",
+"e":"Palm tree"
+},
+{
+"n":"熊貓",
+"f":"panda",
+"g":"Animals & Nature",
+"e":"Panda"
+},
+{
+"n":"鸚鵡",
+"f":"parrot",
+"g":"Animals & Nature",
+"e":"Parrot"
+},
+{
+"n":"動物腳印",
+"f":"paw_prints",
+"g":"Animals & Nature",
+"e":"Paw prints"
+},
+{
+"n":"孔雀",
+"f":"peacock",
+"g":"Animals & Nature",
+"e":"Peacock"
+},
+{
+"n":"企鵝",
+"f":"penguin",
+"g":"Animals & Nature",
+"e":"Penguin"
+},
+{
+"n":"鳳凰",
+"f":"phoenix_bird",
+"g":"Animals & Nature",
+"e":"Phoenix bird"
+},
+{
+"n":"豬",
+"f":"pig",
+"g":"Animals & Nature",
+"e":"Pig"
+},
+{
+"n":"豬頭",
+"f":"pig_face",
+"g":"Animals & Nature",
+"e":"Pig face"
+},
+{
+"n":"豬鼻子",
+"f":"pig_nose",
+"g":"Animals & Nature",
+"e":"Pig nose"
+},
+{
+"n":"北極熊",
+"f":"polar_bear",
+"g":"Animals & Nature",
+"e":"Polar bear"
+},
+{
+"n":"貴賓犬",
+"f":"poodle",
+"g":"Animals & Nature",
+"e":"Poodle"
+},
+{
+"n":"盆景",
+"f":"potted_plant",
+"g":"Animals & Nature",
+"e":"Potted plant"
+},
+{
+"n":"兔子",
+"f":"rabbit",
+"g":"Animals & Nature",
+"e":"Rabbit"
+},
+{
+"n":"兔子頭",
+"f":"rabbit_face",
+"g":"Animals & Nature",
+"e":"Rabbit face"
+},
+{
+"n":"浣熊",
+"f":"raccoon",
+"g":"Animals & Nature",
+"e":"Raccoon"
+},
+{
+"n":"公羊",
+"f":"ram",
+"g":"Animals & Nature",
+"e":"Ram"
+},
+{
+"n":"老鼠",
+"f":"rat",
+"g":"Animals & Nature",
+"e":"Rat"
+},
+{
+"n":"犀牛",
+"f":"rhinoceros",
+"g":"Animals & Nature",
+"e":"Rhinoceros"
+},
+{
+"n":"公雞",
+"f":"rooster",
+"g":"Animals & Nature",
+"e":"Rooster"
+},
+{
+"n":"玫瑰",
+"f":"rose",
+"g":"Animals & Nature",
+"e":"Rose"
+},
+{
+"n":"花朵",
+"f":"rosette",
+"g":"Animals & Nature",
+"e":"Rosette"
+},
+{
+"n":"蜥腳類恐龍",
+"f":"sauropod",
+"g":"Animals & Nature",
+"e":"Sauropod"
+},
+{
+"n":"蠍子",
+"f":"scorpion",
+"g":"Animals & Nature",
+"e":"Scorpion"
+},
+{
+"n":"海豹",
+"f":"seal",
+"g":"Animals & Nature",
+"e":"Seal"
+},
+{
+"n":"苗",
+"f":"seedling",
+"g":"Animals & Nature",
+"e":"Seedling"
+},
+{
+"n":"服務犬",
+"f":"service_dog",
+"g":"Animals & Nature",
+"e":"Service dog"
+},
+{
+"n":"三葉草",
+"f":"shamrock",
+"g":"Animals & Nature",
+"e":"Shamrock"
+},
+{
+"n":"鯊魚",
+"f":"shark",
+"g":"Animals & Nature",
+"e":"Shark"
+},
+{
+"n":"水稻",
+"f":"sheaf_of_rice",
+"g":"Animals & Nature",
+"e":"Sheaf of rice"
+},
+{
+"n":"臭鼬",
+"f":"skunk",
+"g":"Animals & Nature",
+"e":"Skunk"
+},
+{
+"n":"樹懶",
+"f":"sloth",
+"g":"Animals & Nature",
+"e":"Sloth"
+},
+{
+"n":"蝸牛",
+"f":"snail",
+"g":"Animals & Nature",
+"e":"Snail"
+},
+{
+"n":"蛇",
+"f":"snake",
+"g":"Animals & Nature",
+"e":"Snake"
+},
+{
+"n":"蜘蛛",
+"f":"spider",
+"g":"Animals & Nature",
+"e":"Spider"
+},
+{
+"n":"蜘蛛網",
+"f":"spider_web",
+"g":"Animals & Nature",
+"e":"Spider web"
+},
+{
+"n":"海螺",
+"f":"spiral_shell",
+"g":"Animals & Nature",
+"e":"Spiral shell"
+},
+{
+"n":"鯨魚",
+"f":"spouting_whale",
+"g":"Animals & Nature",
+"e":"Spouting whale"
+},
+{
+"n":"向日葵",
+"f":"sunflower",
+"g":"Animals & Nature",
+"e":"Sunflower"
+},
+{
+"n":"天鵝",
+"f":"swan",
+"g":"Animals & Nature",
+"e":"Swan"
+},
+{
+"n":"暴龍",
+"f":"t_rex",
+"g":"Animals & Nature",
+"e":"T-rex"
+},
+{
+"n":"老虎",
+"f":"tiger",
+"g":"Animals & Nature",
+"e":"Tiger"
+},
+{
+"n":"老虎頭",
+"f":"tiger_face",
+"g":"Animals & Nature",
+"e":"Tiger face"
+},
+{
+"n":"熱帶魚",
+"f":"tropical_fish",
+"g":"Animals & Nature",
+"e":"Tropical fish"
+},
+{
+"n":"鬱金香",
+"f":"tulip",
+"g":"Animals & Nature",
+"e":"Tulip"
+},
+{
+"n":"火雞",
+"f":"turkey",
+"g":"Animals & Nature",
+"e":"Turkey"
+},
+{
+"n":"烏龜",
+"f":"turtle",
+"g":"Animals & Nature",
+"e":"Turtle"
+},
+{
+"n":"雙峰駱駝",
+"f":"two_hump_camel",
+"g":"Animals & Nature",
+"e":"Two-hump camel"
+},
+{
+"n":"獨角獸",
+"f":"unicorn",
+"g":"Animals & Nature",
+"e":"Unicorn"
+},
+{
+"n":"水牛",
+"f":"water_buffalo",
+"g":"Animals & Nature",
+"e":"Water buffalo"
+},
+{
+"n":"藍鯨",
+"f":"whale",
+"g":"Animals & Nature",
+"e":"Whale"
+},
+{
+"n":"白花",
+"f":"white_flower",
+"g":"Animals & Nature",
+"e":"White flower"
+},
+{
+"n":"枯萎花朵",
+"f":"wilted_flower",
+"g":"Animals & Nature",
+"e":"Wilted flower"
+},
+{
+"n":"翅膀",
+"f":"wing",
+"g":"Animals & Nature",
+"e":"Wing"
+},
+{
+"n":"狼",
+"f":"wolf",
+"g":"Animals & Nature",
+"e":"Wolf"
+},
+{
+"n":"蠕蟲",
+"f":"worm",
+"g":"Animals & Nature",
+"e":"Worm"
+},
+{
+"n":"斑馬",
+"f":"zebra",
+"g":"Animals & Nature",
+"e":"Zebra"
+},
+{
+"n":"算盤",
+"f":"abacus",
+"g":"Objects",
+"e":"Abacus"
+},
+{
+"n":"手風琴",
+"f":"accordion",
+"g":"Objects",
+"e":"Accordion"
+},
+{
+"n":"OK 繃",
+"f":"adhesive_bandage",
+"g":"Objects",
+"e":"Adhesive bandage"
+},
+{
+"n":"蒸餾器",
+"f":"alembic",
+"g":"Objects",
+"e":"Alembic"
+},
+{
+"n":"斧頭",
+"f":"axe",
+"g":"Objects",
+"e":"Axe"
+},
+{
+"n":"書包",
+"f":"backpack",
+"g":"Objects",
+"e":"Backpack"
+},
+{
+"n":"天平",
+"f":"balance_scale",
+"g":"Objects",
+"e":"Balance scale"
+},
+{
+"n":"芭蕾舞鞋",
+"f":"ballet_shoes",
+"g":"Objects",
+"e":"Ballet shoes"
+},
+{
+"n":"斑鳩琴",
+"f":"banjo",
+"g":"Objects",
+"e":"Banjo"
+},
+{
+"n":"籃子",
+"f":"basket",
+"g":"Objects",
+"e":"Basket"
+},
+{
+"n":"澡盆",
+"f":"bathtub",
+"g":"Objects",
+"e":"Bathtub"
+},
+{
+"n":"床",
+"f":"bed",
+"g":"Objects",
+"e":"Bed"
+},
+{
+"n":"鈴鐺",
+"f":"bell",
+"g":"Objects",
+"e":"Bell"
+},
+{
+"n":"靜音",
+"f":"bell_with_slash",
+"g":"Objects",
+"e":"Bell with slash"
+},
+{
+"n":"比基尼",
+"f":"bikini",
+"g":"Objects",
+"e":"Bikini"
+},
+{
+"n":"鴨舌帽",
+"f":"billed_cap",
+"g":"Objects",
+"e":"Billed cap"
+},
+{
+"n":"鋼筆頭",
+"f":"black_nib",
+"g":"Objects",
+"e":"Black nib"
+},
+{
+"n":"書籤",
+"f":"bookmark",
+"g":"Objects",
+"e":"Bookmark"
+},
+{
+"n":"頁籤",
+"f":"bookmark_tabs",
+"g":"Objects",
+"e":"Bookmark tabs"
+},
+{
+"n":"書本",
+"f":"books",
+"g":"Objects",
+"e":"Books"
+},
+{
+"n":"迴力鏢",
+"f":"boomerang",
+"g":"Objects",
+"e":"Boomerang"
+},
+{
+"n":"弓箭",
+"f":"bow_and_arrow",
+"g":"Objects",
+"e":"Bow and arrow"
+},
+{
+"n":"公事包",
+"f":"briefcase",
+"g":"Objects",
+"e":"Briefcase"
+},
+{
+"n":"泳褲",
+"f":"briefs",
+"g":"Objects",
+"e":"Briefs"
+},
+{
+"n":"斷掉的鏈條",
+"f":"broken_chain",
+"g":"Objects",
+"e":"Broken chain"
+},
+{
+"n":"泡泡",
+"f":"bubbles",
+"g":"Objects",
+"e":"Bubbles"
+},
+{
+"n":"水桶",
+"f":"bucket",
+"g":"Objects",
+"e":"Bucket"
+},
+{
+"n":"開閃光燈",
+"f":"camera_with_flash",
+"g":"Objects",
+"e":"Camera with flash"
+},
+{
+"n":"蠟燭",
+"f":"candle",
+"g":"Objects",
+"e":"Candle"
+},
+{
+"n":"索引卡",
+"f":"card_index",
+"g":"Objects",
+"e":"Card index"
+},
+{
+"n":"木工鋸",
+"f":"carpentry_saw",
+"g":"Objects",
+"e":"Carpentry saw"
+},
+{
+"n":"椅子",
+"f":"chair",
+"g":"Objects",
+"e":"Chair"
+},
+{
+"n":"壓縮機",
+"f":"clamp",
+"g":"Objects",
+"e":"Clamp"
+},
+{
+"n":"場記板",
+"f":"clapper_board",
+"g":"Objects",
+"e":"Clapper board"
+},
+{
+"n":"有待收郵件",
+"f":"closed_mailbox_with_raised_flag",
+"g":"Objects",
+"e":"Closed mailbox with raised flag"
+},
+{
+"n":"手拿包",
+"f":"clutch_bag",
+"g":"Objects",
+"e":"Clutch bag"
+},
+{
+"n":"外套",
+"f":"coat",
+"g":"Objects",
+"e":"Coat"
+},
+{
+"n":"硬幣",
+"f":"coin",
+"g":"Objects",
+"e":"Coin"
+},
+{
+"n":"沙發和立燈",
+"f":"couch_and_lamp",
+"g":"Objects",
+"e":"Couch and lamp"
+},
+{
+"n":"蠟筆",
+"f":"crayon",
+"g":"Objects",
+"e":"Crayon"
+},
+{
+"n":"皇冠",
+"f":"crown",
+"g":"Objects",
+"e":"Crown"
+},
+{
+"n":"電腦",
+"f":"desktop_computer",
+"g":"Objects",
+"e":"Desktop computer"
+},
+{
+"n":"陶碗油燈",
+"f":"diya_lamp",
+"g":"Objects",
+"e":"Diya lamp"
+},
+{
+"n":"DNA",
+"f":"dna",
+"g":"Objects",
+"e":"Dna"
+},
+{
+"n":"洋裝",
+"f":"dress",
+"g":"Objects",
+"e":"Dress"
+},
+{
+"n":"鼓",
+"f":"drum",
+"g":"Objects",
+"e":"Drum"
+},
+{
+"n":"DVD",
+"f":"dvd",
+"g":"Objects",
+"e":"Dvd"
+},
+{
+"n":"插頭",
+"f":"electric_plug",
+"g":"Objects",
+"e":"Electric plug"
+},
+{
+"n":"寄出郵件",
+"f":"envelope_with_arrow",
+"g":"Objects",
+"e":"Envelope with arrow"
+},
+{
+"n":"電影放映機",
+"f":"film_projector",
+"g":"Objects",
+"e":"Film projector"
+},
+{
+"n":"滅火器",
+"f":"fire_extinguisher",
+"g":"Objects",
+"e":"Fire extinguisher"
+},
+{
+"n":"手電筒",
+"f":"flashlight",
+"g":"Objects",
+"e":"Flashlight"
+},
+{
+"n":"平底鞋",
+"f":"flat_shoe",
+"g":"Objects",
+"e":"Flat shoe"
+},
+{
+"n":"長笛",
+"f":"flute",
+"g":"Objects",
+"e":"Flute"
+},
+{
+"n":"摺扇",
+"f":"folding_hand_fan",
+"g":"Objects",
+"e":"Folding hand fan"
+},
+{
+"n":"鋼筆",
+"f":"fountain_pen",
+"g":"Objects",
+"e":"Fountain pen"
+},
+{
+"n":"齒輪",
+"f":"gear",
+"g":"Objects",
+"e":"Gear"
+},
+{
+"n":"眼鏡",
+"f":"glasses",
+"g":"Objects",
+"e":"Glasses"
+},
+{
+"n":"手套",
+"f":"gloves",
+"g":"Objects",
+"e":"Gloves"
+},
+{
+"n":"蛙鏡",
+"f":"goggles",
+"g":"Objects",
+"e":"Goggles"
+},
+{
+"n":"畢業帽",
+"f":"graduation_cap",
+"g":"Objects",
+"e":"Graduation cap"
+},
+{
+"n":"吉他",
+"f":"guitar",
+"g":"Objects",
+"e":"Guitar"
+},
+{
+"n":"梳子",
+"f":"hair_pick",
+"g":"Objects",
+"e":"Hair pick"
+},
+{
+"n":"鎚子",
+"f":"hammer",
+"g":"Objects",
+"e":"Hammer"
+},
+{
+"n":"鎚子和十字鎬",
+"f":"hammer_and_pick",
+"g":"Objects",
+"e":"Hammer and pick"
+},
+{
+"n":"鎚子和扳手",
+"f":"hammer_and_wrench",
+"g":"Objects",
+"e":"Hammer and wrench"
+},
+{
+"n":"手提包",
+"f":"handbag",
+"g":"Objects",
+"e":"Handbag"
+},
+{
+"n":"耳機",
+"f":"headphone",
+"g":"Objects",
+"e":"Headphone"
+},
+{
+"n":"高跟鞋",
+"f":"high_heeled_shoe",
+"g":"Objects",
+"e":"High-heeled shoe"
+},
+{
+"n":"登山靴",
+"f":"hiking_boot",
+"g":"Objects",
+"e":"Hiking boot"
+},
+{
+"n":"鉤子",
+"f":"hook",
+"g":"Objects",
+"e":"Hook"
+},
+{
+"n":"收件匣",
+"f":"inbox_tray",
+"g":"Objects",
+"e":"Inbox tray"
+},
+{
+"n":"收到郵件",
+"f":"incoming_envelope",
+"g":"Objects",
+"e":"Incoming envelope"
+},
+{
+"n":"牛仔褲",
+"f":"jeans",
+"g":"Objects",
+"e":"Jeans"
+},
+{
+"n":"鑰匙",
+"f":"key",
+"g":"Objects",
+"e":"Key"
+},
+{
+"n":"和服",
+"f":"kimono",
+"g":"Objects",
+"e":"Kimono"
+},
+{
+"n":"實驗袍",
+"f":"lab_coat",
+"g":"Objects",
+"e":"Lab coat"
+},
+{
+"n":"吊牌",
+"f":"label",
+"g":"Objects",
+"e":"Label"
+},
+{
+"n":"梯子",
+"f":"ladder",
+"g":"Objects",
+"e":"Ladder"
+},
+{
+"n":"筆電",
+"f":"laptop",
+"g":"Objects",
+"e":"Laptop"
+},
+{
+"n":"燈泡",
+"f":"light_bulb",
+"g":"Objects",
+"e":"Light bulb"
+},
+{
+"n":"連結",
+"f":"link",
+"g":"Objects",
+"e":"Link"
+},
+{
+"n":"相連的回紋針",
+"f":"linked_paperclips",
+"g":"Objects",
+"e":"Linked paperclips"
+},
+{
+"n":"口紅",
+"f":"lipstick",
+"g":"Objects",
+"e":"Lipstick"
+},
+{
+"n":"上鎖",
+"f":"locked",
+"g":"Objects",
+"e":"Locked"
+},
+{
+"n":"鑰匙和鎖",
+"f":"locked_with_key",
+"g":"Objects",
+"e":"Locked with key"
+},
+{
+"n":"長鼓",
+"f":"long_drum",
+"g":"Objects",
+"e":"Long drum"
+},
+{
+"n":"乳液瓶",
+"f":"lotion_bottle",
+"g":"Objects",
+"e":"Lotion bottle"
+},
+{
+"n":"大聲公",
+"f":"loudspeaker",
+"g":"Objects",
+"e":"Loudspeaker"
+},
+{
+"n":"磁鐵",
+"f":"magnet",
+"g":"Objects",
+"e":"Magnet"
+},
+{
+"n":"放大鏡",
+"f":"magnifying_glass_tilted_right",
+"g":"Objects",
+"e":"Magnifying glass tilted right"
+},
+{
+"n":"皮鞋",
+"f":"mans_shoe",
+"g":"Objects",
+"e":"Mans shoe"
+},
+{
+"n":"沙鈴",
+"f":"maracas",
+"g":"Objects",
+"e":"Maracas"
+},
+{
+"n":"擴音器",
+"f":"megaphone",
+"g":"Objects",
+"e":"Megaphone"
+},
+{
+"n":"備忘錄",
+"f":"memo",
+"g":"Objects",
+"e":"Memo"
+},
+{
+"n":"麥克風",
+"f":"microphone",
+"g":"Objects",
+"e":"Microphone"
+},
+{
+"n":"顯微鏡",
+"f":"microscope",
+"g":"Objects",
+"e":"Microscope"
+},
+{
+"n":"頭盔",
+"f":"military_helmet",
+"g":"Objects",
+"e":"Military helmet"
+},
+{
+"n":"鏡子",
+"f":"mirror",
+"g":"Objects",
+"e":"Mirror"
+},
+{
+"n":"復活節島",
+"f":"moai",
+"g":"Objects",
+"e":"Moai"
+},
+{
+"n":"接電話",
+"f":"mobile_phone_with_arrow",
+"g":"Objects",
+"e":"Mobile phone with arrow"
+},
+{
+"n":"錢袋",
+"f":"money_bag",
+"g":"Objects",
+"e":"Money bag"
+},
+{
+"n":"錢飛了",
+"f":"money_with_wings",
+"g":"Objects",
+"e":"Money with wings"
+},
+{
+"n":"捕鼠器",
+"f":"mouse_trap",
+"g":"Objects",
+"e":"Mouse trap"
+},
+{
+"n":"電影攝影機",
+"f":"movie_camera",
+"g":"Objects",
+"e":"Movie camera"
+},
+{
+"n":"樂符",
+"f":"musical_notes",
+"g":"Objects",
+"e":"Musical notes"
+},
+{
+"n":"樂譜",
+"f":"musical_score",
+"g":"Objects",
+"e":"Musical score"
+},
+{
+"n":"螺絲",
+"f":"nut_and_bolt",
+"g":"Objects",
+"e":"Nut and bolt"
+},
+{
+"n":"老鑰匙",
+"f":"old_key",
+"g":"Objects",
+"e":"Old key"
+},
+{
+"n":"一件式泳裝",
+"f":"one_piece_swimsuit",
+"g":"Objects",
+"e":"One-piece swimsuit"
+},
+{
+"n":"打開資料夾",
+"f":"open_file_folder",
+"g":"Objects",
+"e":"Open file folder"
+},
+{
+"n":"光碟",
+"f":"optical_disk",
+"g":"Objects",
+"e":"Optical disk"
+},
+{
+"n":"包裹",
+"f":"package",
+"g":"Objects",
+"e":"Package"
+},
+{
+"n":"文件檔",
+"f":"page_with_curl",
+"g":"Objects",
+"e":"Page with curl"
+},
+{
+"n":"畫筆",
+"f":"paintbrush",
+"g":"Objects",
+"e":"Paintbrush"
+},
+{
+"n":"迴紋針",
+"f":"paperclip",
+"g":"Objects",
+"e":"Paperclip"
+},
+{
+"n":"筆",
+"f":"pen",
+"g":"Objects",
+"e":"Pen"
+},
+{
+"n":"鉛筆",
+"f":"pencil",
+"g":"Objects",
+"e":"Pencil"
+},
+{
+"n":"培養皿",
+"f":"petri_dish",
+"g":"Objects",
+"e":"Petri dish"
+},
+{
+"n":"十字鎬",
+"f":"pick",
+"g":"Objects",
+"e":"Pick"
+},
+{
+"n":"告示牌",
+"f":"placard",
+"g":"Objects",
+"e":"Placard"
+},
+{
+"n":"吸把",
+"f":"plunger",
+"g":"Objects",
+"e":"Plunger"
+},
+{
+"n":"郵件通知",
+"f":"postal_horn",
+"g":"Objects",
+"e":"Postal horn"
+},
+{
+"n":"信箱",
+"f":"postbox",
+"g":"Objects",
+"e":"Postbox"
+},
+{
+"n":"印表機",
+"f":"printer",
+"g":"Objects",
+"e":"Printer"
+},
+{
+"n":"錢包",
+"f":"purse",
+"g":"Objects",
+"e":"Purse"
+},
+{
+"n":"圖釘",
+"f":"pushpin",
+"g":"Objects",
+"e":"Pushpin"
+},
+{
+"n":"收音機",
+"f":"radio",
+"g":"Objects",
+"e":"Radio"
+},
+{
+"n":"剃刀",
+"f":"razor",
+"g":"Objects",
+"e":"Razor"
+},
+{
+"n":"收據",
+"f":"receipt",
+"g":"Objects",
+"e":"Receipt"
+},
+{
+"n":"燈籠",
+"f":"red_paper_lantern",
+"g":"Objects",
+"e":"Red paper lantern"
+},
+{
+"n":"工程安全帽",
+"f":"rescue_workers_helmet",
+"g":"Objects",
+"e":"Rescue workers helmet"
+},
+{
+"n":"戒指",
+"f":"ring",
+"g":"Objects",
+"e":"Ring"
+},
+{
+"n":"捲筒衛生紙",
+"f":"roll_of_paper",
+"g":"Objects",
+"e":"Roll of paper"
+},
+{
+"n":"捲好的報紙",
+"f":"rolled_up_newspaper",
+"g":"Objects",
+"e":"Rolled-up newspaper"
+},
+{
+"n":"運動鞋",
+"f":"running_shoe",
+"g":"Objects",
+"e":"Running shoe"
+},
+{
+"n":"安全別針",
+"f":"safety_pin",
+"g":"Objects",
+"e":"Safety pin"
+},
+{
+"n":"莎麗服",
+"f":"sari",
+"g":"Objects",
+"e":"Sari"
+},
+{
+"n":"衛星天線",
+"f":"satellite_antenna",
+"g":"Objects",
+"e":"Satellite antenna"
+},
+{
+"n":"薩克斯風",
+"f":"saxophone",
+"g":"Objects",
+"e":"Saxophone"
+},
+{
+"n":"圍巾",
+"f":"scarf",
+"g":"Objects",
+"e":"Scarf"
+},
+{
+"n":"剪刀",
+"f":"scissors",
+"g":"Objects",
+"e":"Scissors"
+},
+{
+"n":"螺絲起子",
+"f":"screwdriver",
+"g":"Objects",
+"e":"Screwdriver"
+},
+{
+"n":"捲軸",
+"f":"scroll",
+"g":"Objects",
+"e":"Scroll"
+},
+{
+"n":"盾牌",
+"f":"shield",
+"g":"Objects",
+"e":"Shield"
+},
+{
+"n":"紙袋",
+"f":"shopping_bags",
+"g":"Objects",
+"e":"Shopping bags"
+},
+{
+"n":"購物車",
+"f":"shopping_cart",
+"g":"Objects",
+"e":"Shopping cart"
+},
+{
+"n":"短泳褲",
+"f":"shorts",
+"g":"Objects",
+"e":"Shorts"
+},
+{
+"n":"淋浴",
+"f":"shower",
+"g":"Objects",
+"e":"Shower"
+},
+{
+"n":"肥皂",
+"f":"soap",
+"g":"Objects",
+"e":"Soap"
+},
+{
+"n":"襪子",
+"f":"socks",
+"g":"Objects",
+"e":"Socks"
+},
+{
+"n":"高音量",
+"f":"speaker_high_volume",
+"g":"Objects",
+"e":"Speaker high volume"
+},
+{
+"n":"海綿",
+"f":"sponge",
+"g":"Objects",
+"e":"Sponge"
+},
+{
+"n":"聽診器",
+"f":"stethoscope",
+"g":"Objects",
+"e":"Stethoscope"
+},
+{
+"n":"直尺",
+"f":"straight_ruler",
+"g":"Objects",
+"e":"Straight ruler"
+},
+{
+"n":"錄音室麥克風",
+"f":"studio_microphone",
+"g":"Objects",
+"e":"Studio microphone"
+},
+{
+"n":"太陽眼鏡",
+"f":"sunglasses",
+"g":"Objects",
+"e":"Sunglasses"
+},
+{
+"n":"T恤",
+"f":"t_shirt",
+"g":"Objects",
+"e":"T-shirt"
+},
+{
+"n":"聽筒",
+"f":"telephone_receiver",
+"g":"Objects",
+"e":"Telephone receiver"
+},
+{
+"n":"望遠鏡",
+"f":"telescope",
+"g":"Objects",
+"e":"Telescope"
+},
+{
+"n":"電視",
+"f":"television",
+"g":"Objects",
+"e":"Television"
+},
+{
+"n":"試管",
+"f":"test_tube",
+"g":"Objects",
+"e":"Test tube"
+},
+{
+"n":"人字拖",
+"f":"thong_sandal",
+"g":"Objects",
+"e":"Thong sandal"
+},
+{
+"n":"馬桶",
+"f":"toilet",
+"g":"Objects",
+"e":"Toilet"
+},
+{
+"n":"工具箱",
+"f":"toolbox",
+"g":"Objects",
+"e":"Toolbox"
+},
+{
+"n":"牙刷",
+"f":"toothbrush",
+"g":"Objects",
+"e":"Toothbrush"
+},
+{
+"n":"禮帽",
+"f":"top_hat",
+"g":"Objects",
+"e":"Top hat"
+},
+{
+"n":"三角尺",
+"f":"triangular_ruler",
+"g":"Objects",
+"e":"Triangular ruler"
+},
+{
+"n":"小號",
+"f":"trumpet",
+"g":"Objects",
+"e":"Trumpet"
+},
+{
+"n":"攝影機",
+"f":"video_camera",
+"g":"Objects",
+"e":"Video camera"
+},
+{
+"n":"小提琴",
+"f":"violin",
+"g":"Objects",
+"e":"Violin"
+},
+{
+"n":"廢紙簍",
+"f":"wastebasket",
+"g":"Objects",
+"e":"Wastebasket"
+},
+{
+"n":"水槍",
+"f":"water_pistol",
+"g":"Objects",
+"e":"Water pistol"
+},
+{
+"n":"靴子",
+"f":"womans_boot",
+"g":"Objects",
+"e":"Womans boot"
+},
+{
+"n":"女裝",
+"f":"womans_clothes",
+"g":"Objects",
+"e":"Womans clothes"
+},
+{
+"n":"帽子",
+"f":"womans_hat",
+"g":"Objects",
+"e":"Womans hat"
+},
+{
+"n":"涼鞋",
+"f":"womans_sandal",
+"g":"Objects",
+"e":"Womans sandal"
+},
+{
+"n":"扳手",
+"f":"wrench",
+"g":"Objects",
+"e":"Wrench"
+},
+{
+"n":"空中纜車",
+"f":"aerial_tramway",
+"g":"Travel & Places",
+"e":"Aerial tramway"
+},
+{
+"n":"飛機",
+"f":"airplane",
+"g":"Travel & Places",
+"e":"Airplane"
+},
+{
+"n":"鬧鐘",
+"f":"alarm_clock",
+"g":"Travel & Places",
+"e":"Alarm clock"
+},
+{
+"n":"救護車",
+"f":"ambulance",
+"g":"Travel & Places",
+"e":"Ambulance"
+},
+{
+"n":"錨",
+"f":"anchor",
+"g":"Travel & Places",
+"e":"Anchor"
+},
+{
+"n":"卡車",
+"f":"articulated_lorry",
+"g":"Travel & Places",
+"e":"Articulated lorry"
+},
+{
+"n":"嘟嘟車",
+"f":"auto_rickshaw",
+"g":"Travel & Places",
+"e":"Auto rickshaw"
+},
+{
+"n":"汽車",
+"f":"automobile",
+"g":"Travel & Places",
+"e":"Automobile"
+},
+{
+"n":"銀行",
+"f":"bank",
+"g":"Travel & Places",
+"e":"Bank"
+},
+{
+"n":"理髮店",
+"f":"barber_pole",
+"g":"Travel & Places",
+"e":"Barber pole"
+},
+{
+"n":"海灘陽傘",
+"f":"beach_with_umbrella",
+"g":"Travel & Places",
+"e":"Beach with umbrella"
+},
+{
+"n":"服務鈴",
+"f":"bellhop_bell",
+"g":"Travel & Places",
+"e":"Bellhop bell"
+},
+{
+"n":"自行車",
+"f":"bicycle",
+"g":"Travel & Places",
+"e":"Bicycle"
+},
+{
+"n":"施工中",
+"f":"building_construction",
+"g":"Travel & Places",
+"e":"Building construction"
+},
+{
+"n":"高鐡車頭",
+"f":"bullet_train",
+"g":"Travel & Places",
+"e":"Bullet train"
+},
+{
+"n":"公車站",
+"f":"bus_stop",
+"g":"Travel & Places",
+"e":"Bus stop"
+},
+{
+"n":"露營",
+"f":"camping",
+"g":"Travel & Places",
+"e":"Camping"
+},
+{
+"n":"獨木舟",
+"f":"canoe",
+"g":"Travel & Places",
+"e":"Canoe"
+},
+{
+"n":"旋轉木馬",
+"f":"carousel_horse",
+"g":"Travel & Places",
+"e":"Carousel horse"
+},
+{
+"n":"歐式城堡",
+"f":"castle",
+"g":"Travel & Places",
+"e":"Castle"
+},
+{
+"n":"馬戲團",
+"f":"circus_tent",
+"g":"Travel & Places",
+"e":"Circus tent"
+},
+{
+"n":"古典建築",
+"f":"classical_building",
+"g":"Travel & Places",
+"e":"Classical building"
+},
+{
+"n":"收合的傘",
+"f":"closed_umbrella",
+"g":"Travel & Places",
+"e":"Closed umbrella"
+},
+{
+"n":"雲",
+"f":"cloud",
+"g":"Travel & Places",
+"e":"Cloud"
+},
+{
+"n":"雷雨",
+"f":"cloud_with_lightning_and_rain",
+"g":"Travel & Places",
+"e":"Cloud with lightning and rain"
+},
+{
+"n":"雨天",
+"f":"cloud_with_rain",
+"g":"Travel & Places",
+"e":"Cloud with rain"
+},
+{
+"n":"下雪",
+"f":"cloud_with_snow",
+"g":"Travel & Places",
+"e":"Cloud with snow"
+},
+{
+"n":"慧星",
+"f":"comet",
+"g":"Travel & Places",
+"e":"Comet"
+},
+{
+"n":"指南針",
+"f":"compass",
+"g":"Travel & Places",
+"e":"Compass"
+},
+{
+"n":"施工",
+"f":"construction",
+"g":"Travel & Places",
+"e":"Construction"
+},
+{
+"n":"便利商店",
+"f":"convenience_store",
+"g":"Travel & Places",
+"e":"Convenience store"
+},
+{
+"n":"彎月",
+"f":"crescent_moon",
+"g":"Travel & Places",
+"e":"Crescent moon"
+},
+{
+"n":"颱風",
+"f":"cyclone",
+"g":"Travel & Places",
+"e":"Cyclone"
+},
+{
+"n":"貨車",
+"f":"delivery_truck",
+"g":"Travel & Places",
+"e":"Delivery truck"
+},
+{
+"n":"廢墟",
+"f":"derelict_house",
+"g":"Travel & Places",
+"e":"Derelict house"
+},
+{
+"n":"熱帶小島",
+"f":"desert_island",
+"g":"Travel & Places",
+"e":"Desert island"
+},
+{
+"n":"水滴",
+"f":"droplet",
+"g":"Travel & Places",
+"e":"Droplet"
+},
+{
+"n":"工廠",
+"f":"factory",
+"g":"Travel & Places",
+"e":"Factory"
+},
+{
+"n":"摩天輪",
+"f":"ferris_wheel",
+"g":"Travel & Places",
+"e":"Ferris wheel"
+},
+{
+"n":"渡輪",
+"f":"ferry",
+"g":"Travel & Places",
+"e":"Ferry"
+},
+{
+"n":"火",
+"f":"fire",
+"g":"Travel & Places",
+"e":"Fire"
+},
+{
+"n":"消防車",
+"f":"fire_engine",
+"g":"Travel & Places",
+"e":"Fire engine"
+},
+{
+"n":"上弦月",
+"f":"first_quarter_moon",
+"g":"Travel & Places",
+"e":"First quarter moon"
+},
+{
+"n":"飛碟",
+"f":"flying_saucer",
+"g":"Travel & Places",
+"e":"Flying saucer"
+},
+{
+"n":"噴泉",
+"f":"fountain",
+"g":"Travel & Places",
+"e":"Fountain"
+},
+{
+"n":"加油站",
+"f":"fuel_pump",
+"g":"Travel & Places",
+"e":"Fuel pump"
+},
+{
+"n":"滿月",
+"f":"full_moon",
+"g":"Travel & Places",
+"e":"Full moon"
+},
+{
+"n":"歐洲及非洲",
+"f":"globe_showing_europe_africa",
+"g":"Travel & Places",
+"e":"Globe showing europe-africa"
+},
+{
+"n":"閃爍的星星",
+"f":"glowing_star",
+"g":"Travel & Places",
+"e":"Glowing star"
+},
+{
+"n":"直升機",
+"f":"helicopter",
+"g":"Travel & Places",
+"e":"Helicopter"
+},
+{
+"n":"高壓電",
+"f":"high_voltage",
+"g":"Travel & Places",
+"e":"High voltage"
+},
+{
+"n":"高鐵",
+"f":"high_speed_train",
+"g":"Travel & Places",
+"e":"High-speed train"
+},
+{
+"n":"醫院",
+"f":"hospital",
+"g":"Travel & Places",
+"e":"Hospital"
+},
+{
+"n":"溫泉",
+"f":"hot_springs",
+"g":"Travel & Places",
+"e":"Hot springs"
+},
+{
+"n":"旅館",
+"f":"hotel",
+"g":"Travel & Places",
+"e":"Hotel"
+},
+{
+"n":"沙漏",
+"f":"hourglass_done",
+"g":"Travel & Places",
+"e":"Hourglass done"
+},
+{
+"n":"房子",
+"f":"house",
+"g":"Travel & Places",
+"e":"House"
+},
+{
+"n":"別墅",
+"f":"house_with_garden",
+"g":"Travel & Places",
+"e":"House with garden"
+},
+{
+"n":"房屋建築",
+"f":"houses",
+"g":"Travel & Places",
+"e":"Houses"
+},
+{
+"n":"小屋",
+"f":"hut",
+"g":"Travel & Places",
+"e":"Hut"
+},
+{
+"n":"日式城堡",
+"f":"japanese_castle",
+"g":"Travel & Places",
+"e":"Japanese castle"
+},
+{
+"n":"日本郵局",
+"f":"japanese_post_office",
+"g":"Travel & Places",
+"e":"Japanese post office"
+},
+{
+"n":"滑板車",
+"f":"kick_scooter",
+"g":"Travel & Places",
+"e":"Kick scooter"
+},
+{
+"n":"輕軌",
+"f":"light_rail",
+"g":"Travel & Places",
+"e":"Light rail"
+},
+{
+"n":"蒸汽火車",
+"f":"locomotive",
+"g":"Travel & Places",
+"e":"Locomotive"
+},
+{
+"n":"行李",
+"f":"luggage",
+"g":"Travel & Places",
+"e":"Luggage"
+},
+{
+"n":"座鐘",
+"f":"mantelpiece_clock",
+"g":"Travel & Places",
+"e":"Mantelpiece clock"
+},
+{
+"n":"輪椅",
+"f":"manual_wheelchair",
+"g":"Travel & Places",
+"e":"Manual wheelchair"
+},
+{
+"n":"日本",
+"f":"map_of_japan",
+"g":"Travel & Places",
+"e":"Map of japan"
+},
+{
+"n":"地鐵",
+"f":"metro",
+"g":"Travel & Places",
+"e":"Metro"
+},
+{
+"n":"小型巴士",
+"f":"minibus",
+"g":"Travel & Places",
+"e":"Minibus"
+},
+{
+"n":"單軌",
+"f":"monorail",
+"g":"Travel & Places",
+"e":"Monorail"
+},
+{
+"n":"汽艇",
+"f":"motor_boat",
+"g":"Travel & Places",
+"e":"Motor boat"
+},
+{
+"n":"摩托車",
+"f":"motor_scooter",
+"g":"Travel & Places",
+"e":"Motor scooter"
+},
+{
+"n":"機車",
+"f":"motorcycle",
+"g":"Travel & Places",
+"e":"Motorcycle"
+},
+{
+"n":"電動輪椅",
+"f":"motorized_wheelchair",
+"g":"Travel & Places",
+"e":"Motorized wheelchair"
+},
+{
+"n":"富士山",
+"f":"mount_fuji",
+"g":"Travel & Places",
+"e":"Mount fuji"
+},
+{
+"n":"山",
+"f":"mountain",
+"g":"Travel & Places",
+"e":"Mountain"
+},
+{
+"n":"纜車",
+"f":"mountain_cableway",
+"g":"Travel & Places",
+"e":"Mountain cableway"
+},
+{
+"n":"山區鐵路",
+"f":"mountain_railway",
+"g":"Travel & Places",
+"e":"Mountain railway"
+},
+{
+"n":"油桶",
+"f":"oil_drum",
+"g":"Travel & Places",
+"e":"Oil drum"
+},
+{
+"n":"降落傘",
+"f":"parachute",
+"g":"Travel & Places",
+"e":"Parachute"
+},
+{
+"n":"客船",
+"f":"passenger_ship",
+"g":"Travel & Places",
+"e":"Passenger ship"
+},
+{
+"n":"皮卡車",
+"f":"pickup_truck",
+"g":"Travel & Places",
+"e":"Pickup truck"
+},
+{
+"n":"溜滑梯",
+"f":"playground_slide",
+"g":"Travel & Places",
+"e":"Playground slide"
+},
+{
+"n":"警車",
+"f":"police_car",
+"g":"Travel & Places",
+"e":"Police car"
+},
+{
+"n":"警車燈",
+"f":"police_car_light",
+"g":"Travel & Places",
+"e":"Police car light"
+},
+{
+"n":"歐洲郵局",
+"f":"post_office",
+"g":"Travel & Places",
+"e":"Post office"
+},
+{
+"n":"賽車",
+"f":"racing_car",
+"g":"Travel & Places",
+"e":"Racing car"
+},
+{
+"n":"有軌電車",
+"f":"railway_car",
+"g":"Travel & Places",
+"e":"Railway car"
+},
+{
+"n":"彩虹",
+"f":"rainbow",
+"g":"Travel & Places",
+"e":"Rainbow"
+},
+{
+"n":"救生圈",
+"f":"ring_buoy",
+"g":"Travel & Places",
+"e":"Ring buoy"
+},
+{
+"n":"帶行星環的行星",
+"f":"ringed_planet",
+"g":"Travel & Places",
+"e":"Ringed planet"
+},
+{
+"n":"石頭",
+"f":"rock",
+"g":"Travel & Places",
+"e":"Rock"
+},
+{
+"n":"火箭",
+"f":"rocket",
+"g":"Travel & Places",
+"e":"Rocket"
+},
+{
+"n":"雲霄飛車",
+"f":"roller_coaster",
+"g":"Travel & Places",
+"e":"Roller coaster"
+},
+{
+"n":"輪式溜冰鞋",
+"f":"roller_skate",
+"g":"Travel & Places",
+"e":"Roller skate"
+},
+{
+"n":"帆船",
+"f":"sailboat",
+"g":"Travel & Places",
+"e":"Sailboat"
+},
+{
+"n":"衛星",
+"f":"satellite",
+"g":"Travel & Places",
+"e":"Satellite"
+},
+{
+"n":"學校",
+"f":"school",
+"g":"Travel & Places",
+"e":"School"
+},
+{
+"n":"座位",
+"f":"seat",
+"g":"Travel & Places",
+"e":"Seat"
+},
+{
+"n":"船",
+"f":"ship",
+"g":"Travel & Places",
+"e":"Ship"
+},
+{
+"n":"滑板",
+"f":"skateboard",
+"g":"Travel & Places",
+"e":"Skateboard"
+},
+{
+"n":"小飛機",
+"f":"small_airplane",
+"g":"Travel & Places",
+"e":"Small airplane"
+},
+{
+"n":"雪山",
+"f":"snow_capped_mountain",
+"g":"Travel & Places",
+"e":"Snow-capped mountain"
+},
+{
+"n":"雪花",
+"f":"snowflake",
+"g":"Travel & Places",
+"e":"Snowflake"
+},
+{
+"n":"雪中的雪人",
+"f":"snowman",
+"g":"Travel & Places",
+"e":"Snowman"
+},
+{
+"n":"快艇",
+"f":"speedboat",
+"g":"Travel & Places",
+"e":"Speedboat"
+},
+{
+"n":"休旅車",
+"f":"sport_utility_vehicle",
+"g":"Travel & Places",
+"e":"Sport utility vehicle"
+},
+{
+"n":"競技場",
+"f":"stadium",
+"g":"Travel & Places",
+"e":"Stadium"
+},
+{
+"n":"星星",
+"f":"star",
+"g":"Travel & Places",
+"e":"Star"
+},
+{
+"n":"車站",
+"f":"station",
+"g":"Travel & Places",
+"e":"Station"
+},
+{
+"n":"自由女神",
+"f":"statue_of_liberty",
+"g":"Travel & Places",
+"e":"Statue of liberty"
+},
+{
+"n":"停止標誌",
+"f":"stop_sign",
+"g":"Travel & Places",
+"e":"Stop sign"
+},
+{
+"n":"碼錶",
+"f":"stopwatch",
+"g":"Travel & Places",
+"e":"Stopwatch"
+},
+{
+"n":"太陽",
+"f":"sun",
+"g":"Travel & Places",
+"e":"Sun"
+},
+{
+"n":"晴時多雲",
+"f":"sun_behind_large_cloud",
+"g":"Travel & Places",
+"e":"Sun behind large cloud"
+},
+{
+"n":"晴時有雨",
+"f":"sun_behind_rain_cloud",
+"g":"Travel & Places",
+"e":"Sun behind rain cloud"
+},
+{
+"n":"微笑的太陽",
+"f":"sun_with_face",
+"g":"Travel & Places",
+"e":"Sun with face"
+},
+{
+"n":"懸索鐵路",
+"f":"suspension_railway",
+"g":"Travel & Places",
+"e":"Suspension railway"
+},
+{
+"n":"計程車",
+"f":"taxi",
+"g":"Travel & Places",
+"e":"Taxi"
+},
+{
+"n":"帳篷",
+"f":"tent",
+"g":"Travel & Places",
+"e":"Tent"
+},
+{
+"n":"溫度計",
+"f":"thermometer",
+"g":"Travel & Places",
+"e":"Thermometer"
+},
+{
+"n":"計時器",
+"f":"timer_clock",
+"g":"Travel & Places",
+"e":"Timer clock"
+},
+{
+"n":"東京鐵塔",
+"f":"tokyo_tower",
+"g":"Travel & Places",
+"e":"Tokyo tower"
+},
+{
+"n":"龍捲風",
+"f":"tornado",
+"g":"Travel & Places",
+"e":"Tornado"
+},
+{
+"n":"拖弋機",
+"f":"tractor",
+"g":"Travel & Places",
+"e":"Tractor"
+},
+{
+"n":"火車",
+"f":"train",
+"g":"Travel & Places",
+"e":"Train"
+},
+{
+"n":"路面電車",
+"f":"tram",
+"g":"Travel & Places",
+"e":"Tram"
+},
+{
+"n":"電纜車",
+"f":"tram_car",
+"g":"Travel & Places",
+"e":"Tram car"
+},
+{
+"n":"無軌電車",
+"f":"trolleybus",
+"g":"Travel & Places",
+"e":"Trolleybus"
+},
+{
+"n":"雨傘",
+"f":"umbrella",
+"g":"Travel & Places",
+"e":"Umbrella"
+},
+{
+"n":"雨中的傘",
+"f":"umbrella_with_rain_drops",
+"g":"Travel & Places",
+"e":"Umbrella with rain drops"
+},
+{
+"n":"火山",
+"f":"volcano",
+"g":"Travel & Places",
+"e":"Volcano"
+},
+{
+"n":"手錶",
+"f":"watch",
+"g":"Travel & Places",
+"e":"Watch"
+},
+{
+"n":"波浪",
+"f":"water_wave",
+"g":"Travel & Places",
+"e":"Water wave"
+},
+{
+"n":"輪子",
+"f":"wheel",
+"g":"Travel & Places",
+"e":"Wheel"
+},
+{
+"n":"刮風",
+"f":"wind_face",
+"g":"Travel & Places",
+"e":"Wind face"
+},
+{
+"n":"木頭",
+"f":"wood",
+"g":"Travel & Places",
+"e":"Wood"
+},
+{
+"n":"金牌",
+"f":"1st_place_medal",
+"g":"Activities",
+"e":"1st place medal"
+},
+{
+"n":"入場券",
+"f":"admission_tickets",
+"g":"Activities",
+"e":"Admission tickets"
+},
+{
+"n":"美式足球",
+"f":"american_football",
+"g":"Activities",
+"e":"American football"
+},
+{
+"n":"調色板",
+"f":"artist_palette",
+"g":"Activities",
+"e":"Artist palette"
+},
+{
+"n":"羽毛球",
+"f":"badminton",
+"g":"Activities",
+"e":"Badminton"
+},
+{
+"n":"氣球",
+"f":"balloon",
+"g":"Activities",
+"e":"Balloon"
+},
+{
+"n":"棒球",
+"f":"baseball",
+"g":"Activities",
+"e":"Baseball"
+},
+{
+"n":"籃球",
+"f":"basketball",
+"g":"Activities",
+"e":"Basketball"
+},
+{
+"n":"保齡球",
+"f":"bowling",
+"g":"Activities",
+"e":"Bowling"
+},
+{
+"n":"拳擊手套",
+"f":"boxing_glove",
+"g":"Activities",
+"e":"Boxing glove"
+},
+{
+"n":"命中",
+"f":"bullseye",
+"g":"Activities",
+"e":"Bullseye"
+},
+{
+"n":"鯉魚旗",
+"f":"carp_streamer",
+"g":"Activities",
+"e":"Carp streamer"
+},
+{
+"n":"卒",
+"f":"chess_pawn",
+"g":"Activities",
+"e":"Chess pawn"
+},
+{
+"n":"聖誕樹",
+"f":"christmas_tree",
+"g":"Activities",
+"e":"Christmas tree"
+},
+{
+"n":"梅花",
+"f":"club_suit",
+"g":"Activities",
+"e":"Club suit"
+},
+{
+"n":"五彩紙屑",
+"f":"confetti_ball",
+"g":"Activities",
+"e":"Confetti ball"
+},
+{
+"n":"板球",
+"f":"cricket_game",
+"g":"Activities",
+"e":"Cricket game"
+},
+{
+"n":"水晶球",
+"f":"crystal_ball",
+"g":"Activities",
+"e":"Crystal ball"
+},
+{
+"n":"冰石壺",
+"f":"curling_stone",
+"g":"Activities",
+"e":"Curling stone"
+},
+{
+"n":"方塊",
+"f":"diamond_suit",
+"g":"Activities",
+"e":"Diamond suit"
+},
+{
+"n":"潛水面罩",
+"f":"diving_mask",
+"g":"Activities",
+"e":"Diving mask"
+},
+{
+"n":"曲棍球",
+"f":"field_hockey",
+"g":"Activities",
+"e":"Field hockey"
+},
+{
+"n":"鞭炮",
+"f":"firecracker",
+"g":"Activities",
+"e":"Firecracker"
+},
+{
+"n":"釣魚",
+"f":"fishing_pole",
+"g":"Activities",
+"e":"Fishing pole"
+},
+{
+"n":"高爾夫",
+"f":"flag_in_hole",
+"g":"Activities",
+"e":"Flag in hole"
+},
+{
+"n":"飛盤",
+"f":"flying_disc",
+"g":"Activities",
+"e":"Flying disc"
+},
+{
+"n":"骰子",
+"f":"game_die",
+"g":"Activities",
+"e":"Game die"
+},
+{
+"n":"球門",
+"f":"goal_net",
+"g":"Activities",
+"e":"Goal net"
+},
+{
+"n":"紅心",
+"f":"heart_suit",
+"g":"Activities",
+"e":"Heart suit"
+},
+{
+"n":"冰上曲棍球",
+"f":"ice_hockey",
+"g":"Activities",
+"e":"Ice hockey"
+},
+{
+"n":"溜冰鞋",
+"f":"ice_skate",
+"g":"Activities",
+"e":"Ice skate"
+},
+{
+"n":"南瓜燈",
+"f":"jack_o_lantern",
+"g":"Activities",
+"e":"Jack-o-lantern"
+},
+{
+"n":"女兒節",
+"f":"japanese_dolls",
+"g":"Activities",
+"e":"Japanese dolls"
+},
+{
+"n":"搖桿",
+"f":"joystick",
+"g":"Activities",
+"e":"Joystick"
+},
+{
+"n":"風箏",
+"f":"kite",
+"g":"Activities",
+"e":"Kite"
+},
+{
+"n":"繩結",
+"f":"knot",
+"g":"Activities",
+"e":"Knot"
+},
+{
+"n":"道服",
+"f":"martial_arts_uniform",
+"g":"Activities",
+"e":"Martial arts uniform"
+},
+{
+"n":"軍事獎章",
+"f":"military_medal",
+"g":"Activities",
+"e":"Military medal"
+},
+{
+"n":"鏡面球",
+"f":"mirror_ball",
+"g":"Activities",
+"e":"Mirror ball"
+},
+{
+"n":"俄羅斯娃娃",
+"f":"nesting_dolls",
+"g":"Activities",
+"e":"Nesting dolls"
+},
+{
+"n":"拉炮",
+"f":"party_popper",
+"g":"Activities",
+"e":"Party popper"
+},
+{
+"n":"戲劇",
+"f":"performing_arts",
+"g":"Activities",
+"e":"Performing arts"
+},
+{
+"n":"盆栽",
+"f":"pine_decoration",
+"g":"Activities",
+"e":"Pine decoration"
+},
+{
+"n":"桌球",
+"f":"ping_pong",
+"g":"Activities",
+"e":"Ping pong"
+},
+{
+"n":"皮納塔",
+"f":"pinata",
+"g":"Activities",
+"e":"Piñata"
+},
+{
+"n":"撞球",
+"f":"pool_8_ball",
+"g":"Activities",
+"e":"Pool 8 ball"
+},
+{
+"n":"拼圖",
+"f":"puzzle_piece",
+"g":"Activities",
+"e":"Puzzle piece"
+},
+{
+"n":"黃絲帶",
+"f":"reminder_ribbon",
+"g":"Activities",
+"e":"Reminder ribbon"
+},
+{
+"n":"蝴蝶結",
+"f":"ribbon",
+"g":"Activities",
+"e":"Ribbon"
+},
+{
+"n":"橄欖球",
+"f":"rugby_football",
+"g":"Activities",
+"e":"Rugby football"
+},
+{
+"n":"運動服",
+"f":"running_shirt",
+"g":"Activities",
+"e":"Running shirt"
+},
+{
+"n":"裁縫針",
+"f":"sewing_needle",
+"g":"Activities",
+"e":"Sewing needle"
+},
+{
+"n":"滑雪",
+"f":"skis",
+"g":"Activities",
+"e":"Skis"
+},
+{
+"n":"雪橇",
+"f":"sled",
+"g":"Activities",
+"e":"Sled"
+},
+{
+"n":"吃角子老虎",
+"f":"slot_machine",
+"g":"Activities",
+"e":"Slot machine"
+},
+{
+"n":"足球",
+"f":"soccer_ball",
+"g":"Activities",
+"e":"Soccer ball"
+},
+{
+"n":"壘球",
+"f":"softball",
+"g":"Activities",
+"e":"Softball"
+},
+{
+"n":"黑桃",
+"f":"spade_suit",
+"g":"Activities",
+"e":"Spade suit"
+},
+{
+"n":"閃爍",
+"f":"sparkles",
+"g":"Activities",
+"e":"Sparkles"
+},
+{
+"n":"獎牌",
+"f":"sports_medal",
+"g":"Activities",
+"e":"Sports medal"
+},
+{
+"n":"七夕",
+"f":"tanabata_tree",
+"g":"Activities",
+"e":"Tanabata tree"
+},
+{
+"n":"網球",
+"f":"tennis",
+"g":"Activities",
+"e":"Tennis"
+},
+{
+"n":"線",
+"f":"thread",
+"g":"Activities",
+"e":"Thread"
+},
+{
+"n":"獎盃",
+"f":"trophy",
+"g":"Activities",
+"e":"Trophy"
+},
+{
+"n":"電玩",
+"f":"video_game",
+"g":"Activities",
+"e":"Video game"
+},
+{
+"n":"排球",
+"f":"volleyball",
+"g":"Activities",
+"e":"Volleyball"
+},
+{
+"n":"風鈴",
+"f":"wind_chime",
+"g":"Activities",
+"e":"Wind chime"
+},
+{
+"n":"禮物",
+"f":"wrapped_gift",
+"g":"Activities",
+"e":"Wrapped gift"
+},
+{
+"n":"毛線球",
+"f":"yarn",
+"g":"Activities",
+"e":"Yarn"
+},
+{
+"n":"溜溜球",
+"f":"yo_yo",
+"g":"Activities",
+"e":"Yo-yo"
+}
+]

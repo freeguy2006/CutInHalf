@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#e4452f">
-<meta name="description" content="切一半 Cut In Half：只能切一刀，把食物切成指定的面積比例，考驗你的目測直覺！">
+<meta name="description" content="切一半 Cut In Half：只能切一刀，把東西切成指定的面積比例，考驗你的目測直覺！">
 <title>切一半 Cut In Half</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e4452f'/%3E%3Cpath d='M12 50 L52 14' stroke='%23fff4dc' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='22' cy='24' r='7' fill='none' stroke='%23fff4dc' stroke-width='4'/%3E%3Ccircle cx='42' cy='46' r='7' fill='none' stroke='%23fff4dc' stroke-width='4'/%3E%3C/svg%3E">
 <style>
@@ -238,6 +238,21 @@ button{ font:inherit; color:inherit; }
 }
 .toast.miss.show{ transform:translate(-50%,-50%) scale(1) rotate(-6deg); transition:opacity .15s, transform .3s cubic-bezier(.2,1.8,.4,1); }
 
+.board-loader{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:2; display:flex; align-items:center; gap:10px;
+  padding:10px 20px; border-radius:999px; font-weight:800; color:var(--ink); white-space:nowrap;
+  background:var(--paper); border:3px solid var(--line); box-shadow:0 5px 0 rgba(110,68,35,.3),0 12px 20px rgba(60,30,10,.25);
+}
+.board-loader .spin{ width:22px; height:22px; border-radius:50%; border:4px solid #f3d9b0; border-top-color:var(--tomato); animation:spin .8s linear infinite; }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+.board-msg{
+  position:absolute; inset:14% 8%; z-index:3; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center;
+  padding:16px; border-radius:20px; font-weight:700; line-height:1.6; color:var(--ink);
+  background:rgba(255,250,240,.96); border:3px solid var(--line); box-shadow:0 8px 18px rgba(60,30,10,.3);
+}
+.board-msg p{ margin:0; }
+.board-msg code{ background:#f4e3c1; padding:1px 6px; border-radius:6px; font-size:.92em; }
+.board-msg .btn{ padding:10px 28px; font-size:18px; }
 .result{ width:var(--col); min-height:120px; margin:26px auto 0; display:flex; align-items:center; justify-content:center; }
 .hint{
   display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:999px; text-align:center;
@@ -369,8 +384,8 @@ button{ font:inherit; color:inherit; }
         <img class="piece pa" id="demoA" alt=""><img class="piece pb" id="demoB" alt="">
         <span class="knife"></span><span class="tag t1">42%</span><span class="tag t2">58%</span>
       </div>
-      <p class="rule"><span class="nb">拖曳畫出<b>一刀</b>，</span><span class="nb">把食物切成指定的面積比例，</span><span class="nb">5 回合考驗你的目測直覺！</span></p>
-      <button class="btn big" id="startBtn" type="button" disabled>開始</button>
+      <p class="rule"><span class="nb">拖曳畫出<b>一刀</b>，</span><span class="nb">把東西切成指定的面積比例，</span><span class="nb">5 回合考驗你的目測直覺！</span></p>
+      <button class="btn big" id="startBtn" type="button">開始</button>
       <p class="best-line">目前最高分<b id="startBest">0</b></p>
     </div>
   </section>
@@ -391,6 +406,8 @@ button{ font:inherit; color:inherit; }
         <div class="board-surface"></div>
         <div class="board-hole"></div>
         <canvas id="stage" tabindex="-1" aria-label="切割區：按住滑鼠或手指拖曳出一條線，放開即切下"></canvas>
+        <div class="board-loader" id="loader" hidden><span class="spin" aria-hidden="true"></span><span>送貨中…</span></div>
+        <div class="board-msg" id="boardMsg" hidden></div>
         <div class="toast" id="toast" role="status"></div>
       </div>
     </div>
@@ -439,8 +456,9 @@ button{ font:inherit; color:inherit; }
   </section>
 
   <footer class="foot">
-    食物圖示：<a href="https://github.com/microsoft/fluentui-emoji" target="_blank" rel="noopener">Fluent Emoji</a> © Microsoft,
+    圖片：<a href="https://github.com/microsoft/fluentui-emoji" target="_blank" rel="noopener">Fluent Emoji</a> © Microsoft,
     <a href="https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+    · 名稱：<a href="https://cldr.unicode.org/" target="_blank" rel="noopener">Unicode CLDR</a>
   </footer>
 </div>
 <div class="decor" id="decor" aria-hidden="true"></div>
@@ -452,9 +470,12 @@ button{ font:inherit; color:inherit; }
 'use strict';
 
 /* =====================================================================
- * 資料：30 個物品（base64 內嵌，由 src/build.py 於建置時填入）
+ * 資料：物品清單（名稱 + 檔名，由 src/build.py 於建置時填入；圖片延遲載入）
  * ===================================================================== */
-const ITEMS = /*__ITEMS__*/[];
+const ITEMS = /*__ITEMS__*/[];             // [{ n: 中文名稱, f: 檔名(不含副檔名) }],圖片在 img/<f>.webp,用到才載入
+const IMG_DIR = 'img/';
+const DECOR = /*__DECOR__*/[];             // 開始畫面的裝飾小圖(內嵌 data URI,不需額外請求)
+const DEMO_SRC = '/*__DEMO__*/';           // 開始畫面示範動畫用的披薩(內嵌)
 
 const TOTAL_ROUNDS = 5;
 const MIN_DRAG = 30;                       // 最短拖曳距離（CSS px）
@@ -605,21 +626,13 @@ const Sfx = (() => {
 /* =====================================================================
  * 圖片載入與面積資料
  * ===================================================================== */
-const IMGS = ITEMS.map(it => { const im = new Image(); im.decoding = 'async'; im.src = it.src; return im; });
-const imagesReady = Promise.all(IMGS.map(im =>
-  (im.decode ? im.decode() : new Promise(r => { im.onload = r; })).catch(() => {})
-));
-
-// 每個物品只算一次：所有 alpha > 128 的像素座標（原圖解析度）與外框
-const itemCache = [];
-function getItemData(i){
-  if (itemCache[i]) return itemCache[i];
-  const im = IMGS[i];
+// 讀出圖片所有 alpha > 128 的像素座標（原圖解析度）與外框。每個物品載入後只算一次。
+function computePixels(im){
   const w = im.naturalWidth || 256, h = im.naturalHeight || 256;
   const c = document.createElement('canvas'); c.width = w; c.height = h;
   const x = c.getContext('2d', { willReadFrequently: true });
   x.drawImage(im, 0, 0, w, h);
-  const px = x.getImageData(0, 0, w, h).data;
+  const px = x.getImageData(0, 0, w, h).data;          // 以 file:// 開啟時會丟 SecurityError(canvas 被污染)
   let n = 0;
   for (let k = 3; k < px.length; k += 4) if (px[k] > 128) n++;
   const xs = new Int16Array(n), ys = new Int16Array(n);
@@ -633,11 +646,33 @@ function getItemData(i){
       }
     }
   }
-  return itemCache[i] = {
+  if (n === 0) throw new Error('empty image');
+  return {
     xs, ys, n, w, h, minx, miny, maxx, maxy,
     bw: maxx - minx + 1, bh: maxy - miny + 1,
     bcx: (minx + maxx + 1) / 2, bcy: (miny + maxy + 1) / 2,
   };
+}
+
+// 延遲載入:只在需要時才下載 img/<f>.webp。同一場遊戲內以 Promise 快取,避免重複請求。
+const loadCache = new Map();
+const badItems = new Set();                 // 本次瀏覽中載入失敗的物品,不再抽到
+function loadItem(idx){
+  if (loadCache.has(idx)) return loadCache.get(idx);
+  const p = new Promise((resolve, reject) => {
+    const im = new Image();
+    im.decoding = 'async';
+    im.onload = () => {
+      (im.decode ? im.decode().catch(() => {}) : Promise.resolve()).then(() => {
+        try { resolve({ idx, img: im, data: computePixels(im) }); } catch (e) { reject(e); }
+      });
+    };
+    im.onerror = () => reject(new Error('image load failed: ' + ITEMS[idx].f));
+    im.src = IMG_DIR + ITEMS[idx].f + '.webp';
+  });
+  loadCache.set(idx, p);
+  p.catch(() => loadCache.delete(idx));
+  return p;
 }
 
 // 面積計算：刀線 = 通過 P、方向 D(皆為原圖座標)的無限直線。
@@ -664,7 +699,7 @@ function computeCut(data, P, D){
  * ===================================================================== */
 const G = {
   round: 0, total: 0, rounds: [], queue: [], fixedRatios: null,
-  cur: null, phase: 'idle', token: 0,
+  cur: null, phase: 'idle', token: 0, gid: 0,
 };
 const R = {            // 繪圖狀態
   popT0: 0, drag: null, knife: null, split: null, loop: 0,
@@ -719,7 +754,7 @@ function pointerPos(e){
  * 繪製
  * ===================================================================== */
 function drawItemAt(c, g){
-  c.drawImage(IMGS[G.cur.idx], g.cx - g.bcx * g.scale, g.cy - g.bcy * g.scale, g.iw * g.scale, g.ih * g.scale);
+  c.drawImage(G.cur.img, g.cx - g.bcx * g.scale, g.cy - g.bcy * g.scale, g.iw * g.scale, g.ih * g.scale);
 }
 function setShadow(c, on){
   if (on){ c.shadowColor = 'rgba(50,24,6,.40)'; c.shadowBlur = 16 * dpr; c.shadowOffsetY = 8 * dpr; c.shadowOffsetX = 0; }
@@ -855,9 +890,10 @@ function drawKnife(now){
 }
 
 function draw(now){
-  if (!G.cur || !W) return;
+  if (!W) return;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, W, H);
+  if (!G.cur) return;
   ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
   if (R.split && R.split.pieces){
     drawSplit(now);
@@ -888,7 +924,7 @@ const hudRound = $('hudRound'), hudScore = $('hudScore');
 const ratioEl = $('ratio'), ratioL = $('ratioL'), ratioR = $('ratioR'), ratioCap = $('ratioCap');
 const hint = $('hint'), hintText = $('hintText'), rcard = $('rcard');
 const commentEl = $('comment'), rscoreEl = $('rscore'), rdetail = $('rdetail'), nextBtn = $('nextBtn');
-const toastEl = $('toast'), boardEl = $('board');
+const toastEl = $('toast'), boardEl = $('board'), loaderEl = $('loader'), boardMsg = $('boardMsg');
 let toastTimer = 0;
 
 function toast(msg, miss){
@@ -923,27 +959,63 @@ function pickDistinct(n){
   return idx.slice(0, n);
 }
 
+// 圖片載入失敗時,靜默換一個沒用過、也沒壞過的物品
+function replacementFor(round){
+  const bad = G.queue[round];
+  badItems.add(bad);
+  const taken = new Set(G.queue);
+  for (let t = 0; t < 400; t++){
+    const i = rand(ITEMS.length);
+    if (!taken.has(i) && !badItems.has(i)) return (G.queue[round] = i);
+  }
+  return bad;
+}
+// 取得第 round 回合的圖片與像素資料;載入失敗就換物品重試
+async function ensureRound(round){
+  const gid = G.gid;
+  let lastErr = null;
+  for (let tries = 0; tries < 8; tries++){
+    try { return await loadItem(G.queue[round]); }
+    catch (e) {
+      lastErr = e;
+      if (e && e.name === 'SecurityError') throw e;      // 不是單張圖壞掉,換物品也沒用
+      if (gid !== G.gid) throw e;                        // 期間重新開了一場,不要動新的題目佇列
+      replacementFor(round);
+    }
+  }
+  throw lastErr || new Error('load failed');
+}
+
 // opts 只供自動化測試使用：{ items:[索引×5], ratios:[比例池索引×5] }
 function startGame(opts = {}){
   Sfx.unlock();
-  G.token++;
+  G.token++; G.gid++;
   G.round = 0; G.total = 0; G.rounds = [];
   G.queue = opts.items ? opts.items.slice() : pickDistinct(TOTAL_ROUNDS);
   G.fixedRatios = opts.ratios ? opts.ratios.slice() : null;
+  loadCache.clear();
   hudScore.textContent = '0';
   showScreen('game');
   resizeCanvas();
   beginRound();
 }
 
-function beginRound(){
-  const idx = G.queue[G.round];
-  const ratio = G.fixedRatios ? RATIOS[G.fixedRatios[G.round]] : RATIOS[rand(RATIOS.length)];
-  G.cur = { idx, ratio, data: getItemData(idx) };
-  R.split = null; R.knife = null; R.drag = null; R.popT0 = performance.now();
-  G.phase = 'ready';
-  canvas.classList.remove('locked');
-  hudRound.textContent = String(G.round + 1);
+function showLoader(on){ loaderEl.hidden = !on; }
+function showBoardMsg(html, retry){
+  boardMsg.innerHTML = '<p>' + html + '</p>' + (retry ? '<button class="btn" type="button" id="retryBtn">重試</button>' : '');
+  boardMsg.hidden = false;
+  hint.hidden = true;
+  if (retry) $('retryBtn').addEventListener('click', () => { boardMsg.hidden = true; beginRound(); });
+}
+
+async function beginRound(){
+  const gid = G.gid, round = G.round;
+  const ratio = G.fixedRatios ? RATIOS[G.fixedRatios[round]] : RATIOS[rand(RATIOS.length)];
+  G.cur = null; G.phase = 'loading';
+  R.split = null; R.knife = null; R.drag = null;
+  canvas.classList.add('locked');
+  boardMsg.hidden = true;
+  hudRound.textContent = String(round + 1);
   const [l, r] = ratio.label.split(' : ');
   ratioL.textContent = l; ratioR.textContent = r;
   ratioCap.textContent = `小塊佔 ${+ratio.small.toFixed(1)}%`;
@@ -951,6 +1023,27 @@ function beginRound(){
   rcard.hidden = true; nextBtn.hidden = true;
   hint.hidden = false; setHint('按住拖曳畫出一刀，放開就切！');
   toastEl.classList.remove('show');
+
+  const timer = setTimeout(() => showLoader(true), 150);      // 超過 150ms 才顯示載入中
+  let res;
+  try { res = await ensureRound(round); }
+  catch (e) {
+    clearTimeout(timer); showLoader(false);
+    if (gid !== G.gid) return;
+    if (e && e.name === 'SecurityError')
+      showBoardMsg('此頁面需要透過網址（http / https）開啟才能讀取圖片像素。<br>請用本機伺服器開啟，例如在資料夾執行 <code>python -m http.server</code>，詳見 README。', false);
+    else
+      showBoardMsg('圖片載入失敗，請檢查網路連線後重試。', true);
+    return;
+  }
+  clearTimeout(timer); showLoader(false);
+  if (gid !== G.gid || round !== G.round) return;               // 期間重新開了一場
+  G.cur = { idx: res.idx, ratio, img: res.img, data: res.data };
+  R.popT0 = performance.now();
+  G.phase = 'ready';
+  canvas.classList.remove('locked');
+  // 玩這一回合時,背景預先載入下一回合的圖
+  if (round + 1 < TOTAL_ROUNDS) ensureRound(round + 1).catch(() => {});
 }
 
 function onMiss(d){
@@ -958,7 +1051,7 @@ function onMiss(d){
   R.knife = { x1: d.x1, y1: d.y1, x2: d.x2, y2: d.y2, active: false, t0: performance.now(), fade: 450 };
   Sfx.miss();
   toast('沒切到！', true);
-  setHint('刀要劃過食物才算數，再切一次（不扣分）', true);
+  setHint('刀要劃過東西才算數，再切一次（不扣分）', true);
   boardEl.classList.remove('shake'); void boardEl.offsetWidth; boardEl.classList.add('shake');
   setTimeout(() => { if (G.phase === 'cutting' && !R.split) G.phase = 'ready'; }, 500);
 }
@@ -984,7 +1077,7 @@ async function performCut(d){
   const smallSide = res.a <= res.b ? 0 : 1;
   const smallTenths = Math.min(tenthsA, tenthsB);
   const rec = {
-    idx: G.cur.idx, name: ITEMS[G.cur.idx].name, target: G.cur.ratio.label,
+    idx: G.cur.idx, name: ITEMS[G.cur.idx].n, target: G.cur.ratio.label,
     small: smallTenths / 10, large: (1000 - smallTenths) / 10, e, score,
   };
   G.rounds.push(rec);
@@ -1090,7 +1183,7 @@ function finishGame(){
     `<span>最高分 <b>${best.toLocaleString('en-US')}</b></span>` +
     (isNew ? '<span class="badge">新紀錄！</span>' : `<span>距離最高分還差 <b>${(best - total).toLocaleString('en-US')}</b> 分</span>`);
   $('tbody').innerHTML = G.rounds.map((r, i) =>
-    `<tr><td class="rn">${i + 1}</td><td class="it"><div class="itc"><img alt="" src="${ITEMS[r.idx].src}"><span>${r.name}</span></div></td>` +
+    `<tr><td class="rn">${i + 1}</td><td class="it"><div class="itc"><img alt="" src="${IMG_DIR + ITEMS[r.idx].f}.webp"><span>${r.name}</span></div></td>` +
     `<td>${r.target}</td><td>${fmt1(r.small)} : ${fmt1(r.large)}</td><td class="sc">${r.score}</td></tr>`).join('');
   $('tfootTotal').textContent = total.toLocaleString('en-US');
 
@@ -1142,20 +1235,19 @@ function initDecor(){
     { l: '3%', t: '10%', r: -14 }, { l: '9%', t: '38%', r: 10 }, { l: '4%', t: '66%', r: -6 }, { l: '14%', t: '84%', r: 16 },
     { r2: '3%', t: '12%', r: 12 }, { r2: '9%', t: '40%', r: -10 }, { r2: '4%', t: '68%', r: 8 }, { r2: '14%', t: '85%', r: -16 },
   ];
-  const ids = pickDistinct(slots.length);
+  const ids = DECOR.map((_, i) => i);
+  for (let i = ids.length - 1; i > 0; i--){ const j = rand(i + 1); [ids[i], ids[j]] = [ids[j], ids[i]]; }
   $('decor').innerHTML = slots.map((s, i) =>
-    `<img alt="" src="${ITEMS[ids[i]].src}" style="top:${s.t};${s.l ? 'left:' + s.l : 'right:' + s.r2};--r:${s.r}deg;animation-delay:${(i * 0.6).toFixed(1)}s">`).join('');
+    `<img alt="" src="${DECOR[ids[i % ids.length]]}" style="top:${s.t};${s.l ? 'left:' + s.l : 'right:' + s.r2};--r:${s.r}deg;animation-delay:${(i * 0.6).toFixed(1)}s">`).join('');
 }
 
 $('startBtn').addEventListener('click', () => { Sfx.click(); startGame(); });
-$('demoA').src = ITEMS[0].src; $('demoB').src = ITEMS[0].src;
+$('demoA').src = DEMO_SRC; $('demoB').src = DEMO_SRC;
 initDecor();
 renderBest();
-const startBtn = $('startBtn');
-imagesReady.then(() => { startBtn.disabled = false; });
 
 // 測試用掛勾（唯讀偵錯介面，不影響遊戲）
-window.__cih = { G, R, RATIOS, TIERS, ITEMS, canvas, startGame, getItemData, computeCut, scoreFor, commentFor, tierIndexFor, geom, imagesReady };
+window.__cih = { G, R, RATIOS, TIERS, ITEMS, canvas, startGame, loadItem, loadCache, computeCut, scoreFor, commentFor, tierIndexFor, geom };
 })();
 </script>
 </body>
