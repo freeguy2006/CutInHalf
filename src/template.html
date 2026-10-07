@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#e4452f">
+<meta name="description" content="切一半 Cut In Half：只能切一刀，把食物切成指定的面積比例，考驗你的目測直覺！">
+<title>切一半 Cut In Half</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e4452f'/%3E%3Cpath d='M12 50 L52 14' stroke='%23fff4dc' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='22' cy='24' r='7' fill='none' stroke='%23fff4dc' stroke-width='4'/%3E%3Ccircle cx='42' cy='46' r='7' fill='none' stroke='%23fff4dc' stroke-width='4'/%3E%3C/svg%3E">
+<style>
+:root{
+  --wood-1:#d9a468; --wood-2:#c98f50; --wood-3:#b9793d; --wood-dark:#6e4423; --wood-edge:#8f5c2d;
+  --cream:#fff4dc; --cream-2:#ffe7bd; --paper:#fffaf0; --line:#e6cf9f;
+  --tomato:#e4452f; --tomato-2:#f0614a; --tomato-dark:#a92f1d;
+  --ink:#4a2c17; --ink-soft:#8a6446; --gold:#e7a712; --green:#3d9a47; --blue:#2f7fb5; --orange:#e07b0a;
+  --col:min(calc(100vw - 24px),620px);
+  --board:clamp(280px,min(calc(100vw - 28px),580px,calc(100vh - 380px)),580px);
+  --font:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Heiti TC","Hiragino Sans CNS",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@supports (height:100dvh){
+  :root{ --board:clamp(280px,min(calc(100vw - 28px),580px,calc(100dvh - 380px)),580px); }
+}
+@media (min-width:980px){
+  :root{ --board:clamp(300px,min(580px,calc(100vh - 335px)),580px); }
+  .app{ padding-top:18px !important; }
+}
+@supports (height:100dvh){
+  @media (min-width:980px){ :root{ --board:clamp(300px,min(580px,calc(100dvh - 335px)),580px); } }
+}
+*{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+[hidden]{ display:none !important; }
+html,body{ margin:0; min-height:100%; }
+body{
+  font-family:var(--font); color:var(--ink); line-height:1.45;
+  background-color:#fff3d9;
+  background-image:
+    linear-gradient(90deg,rgba(228,69,47,.17) 50%,transparent 50%),
+    linear-gradient(0deg,rgba(228,69,47,.17) 50%,transparent 50%);
+  background-size:64px 64px;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+}
+body::before{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(ellipse at 50% 38%,rgba(255,246,226,.88) 0%,rgba(255,246,226,.35) 52%,rgba(140,60,20,.22) 100%);
+}
+button{ font:inherit; color:inherit; }
+.app{
+  position:relative; z-index:1; min-height:100vh; min-height:100dvh;
+  display:flex; flex-direction:column; align-items:center;
+  padding:calc(52px + env(safe-area-inset-top)) 12px calc(14px + env(safe-area-inset-bottom));
+}
+.screen{ width:100%; display:flex; flex-direction:column; align-items:center; flex:1 0 auto; }
+
+/* ---------- 上方工具列 ---------- */
+.topbar{
+  position:fixed; z-index:20; top:0; left:0; right:0; height:48px; padding:6px 10px 0;
+  display:flex; align-items:center; justify-content:space-between; pointer-events:none;
+}
+.brand{
+  font-weight:900; font-size:15px; letter-spacing:.08em; color:var(--tomato-dark);
+  background:var(--paper); border:2px solid var(--line); border-radius:999px; padding:3px 12px;
+  box-shadow:0 2px 0 rgba(110,68,35,.2); opacity:0; transition:opacity .25s;
+}
+.brand small{ font-weight:700; color:var(--ink-soft); letter-spacing:.02em; margin-left:4px; }
+.app:not([data-screen="start"]) .brand{ opacity:1; }
+.icon-btn{
+  pointer-events:auto; width:42px; height:42px; border-radius:50%; cursor:pointer;
+  display:grid; place-items:center; color:var(--ink);
+  background:var(--paper); border:2px solid var(--line); box-shadow:0 3px 0 rgba(110,68,35,.28);
+  transition:transform .08s, box-shadow .08s;
+}
+.icon-btn:active{ transform:translateY(2px); box-shadow:0 1px 0 rgba(110,68,35,.28); }
+.icon-btn:focus-visible{ outline:3px solid var(--tomato); outline-offset:2px; }
+.icon-btn svg{ width:22px; height:22px; }
+.icon-btn .ic-off{ display:none; color:var(--tomato-dark); }
+.icon-btn[aria-pressed="true"] .ic-on{ display:none; }
+.icon-btn[aria-pressed="true"] .ic-off{ display:block; }
+
+/* ---------- 按鈕 ---------- */
+.btn{
+  appearance:none; border:0; cursor:pointer; touch-action:manipulation;
+  font-weight:900; letter-spacing:.06em; border-radius:999px; padding:14px 30px; font-size:20px;
+  color:#fff; background:linear-gradient(180deg,var(--tomato-2),var(--tomato));
+  box-shadow:0 6px 0 var(--tomato-dark),0 12px 18px rgba(120,40,20,.28);
+  text-shadow:0 2px 0 rgba(120,30,15,.45);
+  transition:transform .08s, box-shadow .08s, filter .15s;
+}
+.btn:hover{ filter:brightness(1.06); }
+.btn:active{ transform:translateY(4px); box-shadow:0 2px 0 var(--tomato-dark),0 4px 8px rgba(120,40,20,.25); }
+.btn:focus-visible{ outline:4px solid var(--gold); outline-offset:3px; }
+.btn[disabled]{ filter:grayscale(.6); cursor:wait; }
+.btn.big{ font-size:clamp(22px,6vw,28px); padding:16px 44px; }
+
+/* ---------- 開始畫面 ---------- */
+#screen-start{ justify-content:center; gap:0; padding-bottom:10px; }
+.hero{
+  position:relative; width:min(100%,520px); text-align:center;
+  background:linear-gradient(180deg,var(--paper),var(--cream));
+  border:3px solid var(--line); border-radius:34px; padding:26px 22px 28px;
+  box-shadow:0 8px 0 rgba(143,92,45,.35),0 26px 40px rgba(90,40,15,.25);
+}
+.hero::before{
+  content:""; position:absolute; inset:9px; border:2px dashed rgba(228,69,47,.4); border-radius:26px; pointer-events:none;
+}
+.logo{
+  position:relative; display:inline-block; margin:2px 0 0; font-weight:900; line-height:1.05;
+  font-size:clamp(70px,22vw,112px); letter-spacing:.06em; padding:0 .06em;
+}
+.logo .l-size{ visibility:hidden; }
+.logo .l-half{
+  position:absolute; inset:0; padding:0 .06em; color:var(--tomato);
+  -webkit-text-stroke:.07em var(--tomato-dark); paint-order:stroke fill;
+  text-shadow:0 .06em 0 var(--tomato-dark);
+}
+.logo .l-a{ clip-path:polygon(0 0,100% 0,100% 32%,0 68%); transform:translate(-.025em,-.035em); animation:halfA 3.6s ease-in-out infinite; }
+.logo .l-b{ clip-path:polygon(0 68%,100% 32%,100% 100%,0 100%); transform:translate(.025em,.035em); animation:halfB 3.6s ease-in-out infinite; }
+@keyframes halfA{ 0%,55%,100%{ transform:translate(-.025em,-.035em); } 70%,85%{ transform:translate(-.05em,-.07em) rotate(-1.2deg); } }
+@keyframes halfB{ 0%,55%,100%{ transform:translate(.025em,.035em); } 70%,85%{ transform:translate(.05em,.07em) rotate(1.2deg); } }
+.logo .l-slash{
+  position:absolute; left:-4%; right:-4%; top:50%; height:3px; border-radius:3px; transform:rotate(-17deg);
+  background:linear-gradient(90deg,transparent,#fff 18%,#fff 82%,transparent);
+  box-shadow:0 0 10px 2px rgba(255,255,255,.95),0 0 22px 6px rgba(255,214,150,.7);
+  opacity:.9;
+}
+.subtitle{ margin:6px 0 0; font-weight:800; letter-spacing:.3em; font-size:15px; color:var(--ink-soft); text-transform:uppercase; padding-left:.3em; }
+.demo{
+  position:relative; width:168px; height:168px; margin:18px auto 14px; border-radius:30px;
+  background:
+    radial-gradient(ellipse 60% 5% at 30% 25%,rgba(110,60,22,.2),transparent 70%),
+    radial-gradient(ellipse 55% 5% at 70% 60%,rgba(110,60,22,.2),transparent 70%),
+    repeating-linear-gradient(180deg,rgba(95,52,20,.09) 0 1px,transparent 1px 6px),
+    linear-gradient(180deg,#d9a468,#c58a4d 50%,#d3a063);
+  box-shadow:inset 0 0 0 3px rgba(120,70,30,.5),inset 0 0 0 7px rgba(255,220,170,.25),0 6px 0 #8f5c2d,0 14px 18px rgba(60,30,10,.3);
+}
+.demo .piece{ position:absolute; inset:16px; width:calc(100% - 32px); height:calc(100% - 32px); filter:drop-shadow(0 6px 5px rgba(50,25,5,.4)); }
+.demo .pa{ clip-path:polygon(0 0,58% 0,42% 100%,0 100%); animation:pa 3.6s ease-in-out infinite; }
+.demo .pb{ clip-path:polygon(58% 0,100% 0,100% 100%,42% 100%); animation:pb 3.6s ease-in-out infinite; }
+@keyframes pa{ 0%,40%,100%{ transform:none; } 52%,82%{ transform:translate(-14px,0) rotate(-4deg); } }
+@keyframes pb{ 0%,40%,100%{ transform:none; } 52%,82%{ transform:translate(14px,0) rotate(4deg); } }
+.demo .knife{
+  position:absolute; left:calc(50% + 8px); top:-6px; width:4px; height:0; border-radius:4px; transform:rotate(7deg); transform-origin:top;
+  background:#fff; box-shadow:0 0 10px 3px rgba(255,255,255,.95);
+  animation:knife 3.6s ease-in-out infinite;
+}
+@keyframes knife{ 0%,22%{ height:0; opacity:1; } 38%{ height:180px; opacity:1; } 50%,100%{ height:180px; opacity:0; } }
+.demo .tag{
+  position:absolute; bottom:-12px; padding:2px 10px; border-radius:999px; font-weight:900; font-size:14px;
+  background:var(--paper); border:2px solid var(--wood-dark); color:var(--ink); opacity:0; animation:tag 3.6s ease-in-out infinite;
+}
+.demo .tag.t1{ left:6px; background:var(--tomato); border-color:var(--tomato-dark); color:#fff; }
+.demo .tag.t2{ right:6px; }
+@keyframes tag{ 0%,50%{ opacity:0; transform:translateY(6px); } 60%,84%{ opacity:1; transform:none; } 100%{ opacity:0; } }
+.rule .nb{ display:inline-block; }
+.rule{ margin:18px auto 20px; max-width:30em; font-size:clamp(16px,4.3vw,18px); font-weight:700; color:var(--ink); }
+.rule b{ color:var(--tomato-dark); }
+.best-line{ margin:20px 0 0; font-weight:800; color:var(--ink-soft); font-size:15px; }
+.best-line b{ color:var(--tomato-dark); font-size:20px; font-variant-numeric:tabular-nums; margin-left:4px; }
+.decor{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.decor img{ position:absolute; width:clamp(84px,8vw,128px); height:auto; filter:drop-shadow(0 10px 8px rgba(70,30,10,.3)); animation:bob 5s ease-in-out infinite; }
+@keyframes bob{ 0%,100%{ transform:translateY(0) rotate(var(--r)); } 50%{ transform:translateY(-10px) rotate(calc(var(--r) + 4deg)); } }
+.app:not([data-screen="start"]) ~ .decor, body.no-decor .decor{ display:none; }
+@media (max-width:980px){ .decor{ display:none; } }
+
+/* ---------- 遊戲畫面 ---------- */
+#screen-game{ gap:0; }
+.hud{
+  width:var(--col); display:grid; grid-template-columns:1fr auto 1fr; align-items:stretch; gap:8px; margin:0 auto 14px;
+}
+.pill{
+  display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:6px 12px; min-width:0;
+  background:var(--paper); border:2px solid var(--line); border-radius:18px; box-shadow:0 4px 0 rgba(110,68,35,.22);
+}
+.pill .lbl{ font-size:12px; font-weight:800; letter-spacing:.14em; color:var(--ink-soft); }
+.pill .val{ font-size:clamp(22px,6.4vw,30px); font-weight:900; line-height:1.1; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.pill .val small{ font-size:.62em; color:var(--ink-soft); font-weight:800; }
+.target{
+  position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:5px 18px 6px; min-width:min(46vw,210px);
+  color:#fff; background:linear-gradient(180deg,var(--tomato-2),var(--tomato)); border-radius:20px;
+  box-shadow:0 5px 0 var(--tomato-dark),0 12px 18px rgba(120,40,20,.25);
+}
+.target::before{ content:""; position:absolute; inset:4px; border:2px dashed rgba(255,244,220,.55); border-radius:16px; pointer-events:none; }
+.target .lbl{ font-size:12px; font-weight:800; letter-spacing:.3em; padding-left:.3em; color:var(--cream-2); }
+.ratio{
+  display:flex; align-items:center; gap:.18em; font-weight:900; line-height:1; font-variant-numeric:tabular-nums;
+  font-size:clamp(34px,10.4vw,54px); text-shadow:0 3px 0 rgba(130,30,15,.5); margin:2px 0 1px;
+}
+.ratio i{ font-style:normal; opacity:.85; transform:translateY(-.06em); }
+.ratio.bump{ animation:bump .5s cubic-bezier(.2,1.6,.4,1); }
+@keyframes bump{ 0%{ transform:scale(.6); opacity:0; } 100%{ transform:none; opacity:1; } }
+.target .cap{ font-size:12px; font-weight:700; color:var(--cream-2); letter-spacing:.05em; }
+
+.board-wrap{ width:var(--col); display:flex; justify-content:center; }
+.board{ position:relative; width:var(--board); height:var(--board); border-radius:26px; box-shadow:0 10px 0 #9b6733,0 13px 0 #6b4220,0 26px 34px rgba(50,22,6,.4); }
+.board.shake{ animation:shake .45s; }
+@keyframes shake{ 10%,50%,90%{ transform:translateX(-7px); } 30%,70%{ transform:translateX(7px); } 100%{ transform:none; } }
+.board-surface{
+  position:absolute; inset:0; border-radius:26px; pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 28% 0%,rgba(255,238,205,.4),transparent 62%),
+    radial-gradient(ellipse 40% 2.6% at 22% 17%,rgba(105,55,18,.22),transparent 72%),
+    radial-gradient(ellipse 55% 2.2% at 72% 29%,rgba(105,55,18,.2),transparent 72%),
+    radial-gradient(ellipse 46% 2.8% at 34% 47%,rgba(105,55,18,.22),transparent 72%),
+    radial-gradient(ellipse 62% 2%   at 78% 63%,rgba(105,55,18,.18),transparent 72%),
+    radial-gradient(ellipse 42% 3%   at 27% 84%,rgba(105,55,18,.22),transparent 72%),
+    radial-gradient(ellipse 10% 7%   at 83% 22%,rgba(100,52,16,.16),transparent 70%),
+    radial-gradient(ellipse 7% 5%    at 17% 71%,rgba(100,52,16,.14),transparent 70%),
+    repeating-linear-gradient(180deg,rgba(95,52,20,.075) 0 1px,transparent 1px 5px),
+    repeating-linear-gradient(180deg,transparent 0 13px,rgba(95,52,20,.11) 13px 14px,transparent 14px 29px),
+    repeating-linear-gradient(180deg,transparent 0 37px,rgba(255,232,195,.13) 37px 41px,transparent 41px 83px),
+    repeating-linear-gradient(180deg,transparent 0 71px,rgba(95,52,20,.08) 71px 74px,transparent 74px 131px),
+    linear-gradient(180deg,#dcab6e,#cb9152 16%,#dba76a 31%,#c4864a 50%,#d8a266 68%,#c58a4d 84%,#d29c5e);
+  box-shadow:
+    inset 0 0 0 3px rgba(122,72,30,.55),
+    inset 0 0 0 9px rgba(255,224,176,.22),
+    inset 0 -14px 24px rgba(80,40,10,.28),
+    inset 0 10px 18px rgba(255,236,200,.18);
+}
+.board-hole{
+  position:absolute; top:3.6%; left:50%; width:15%; height:3.4%; transform:translateX(-50%); border-radius:999px; pointer-events:none;
+  background:#46280f; box-shadow:inset 0 4px 6px rgba(0,0,0,.65),0 1.5px 0 rgba(255,228,184,.55);
+}
+#stage{
+  position:absolute; inset:0; width:100%; height:100%; display:block; border-radius:26px;
+  touch-action:none; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; cursor:crosshair; outline:none;
+}
+#stage.locked{ cursor:default; }
+.toast{
+  position:absolute; left:50%; bottom:5%; transform:translate(-50%,10px); width:max-content; max-width:92%; text-align:center; pointer-events:none;
+  background:rgba(58,28,8,.88); color:#fff; padding:8px 16px; border-radius:999px; font-weight:800; font-size:15px;
+  opacity:0; transition:opacity .2s, transform .2s; z-index:3;
+}
+.toast.show{ opacity:1; transform:translate(-50%,0); }
+.toast.miss{
+  bottom:auto; top:50%; font-size:clamp(28px,8vw,42px); padding:8px 28px; letter-spacing:.08em; color:#fff;
+  background:linear-gradient(180deg,var(--tomato-2),var(--tomato)); border:4px solid var(--cream); box-shadow:0 8px 0 var(--tomato-dark),0 16px 24px rgba(0,0,0,.3);
+  transform:translate(-50%,-50%) scale(.6) rotate(-6deg);
+}
+.toast.miss.show{ transform:translate(-50%,-50%) scale(1) rotate(-6deg); transition:opacity .15s, transform .3s cubic-bezier(.2,1.8,.4,1); }
+
+.result{ width:var(--col); min-height:120px; margin:26px auto 0; display:flex; align-items:center; justify-content:center; }
+.hint{
+  display:flex; align-items:center; gap:10px; padding:10px 18px; border-radius:999px; text-align:center;
+  font-weight:800; font-size:clamp(14px,3.9vw,17px); color:var(--ink-soft);
+  background:rgba(255,250,240,.7); border:2px dashed var(--line);
+}
+.hint svg{ width:46px; height:24px; flex:none; }
+.hint.warn{ color:var(--tomato-dark); border-color:var(--tomato); background:rgba(255,236,226,.85); }
+.rcard{
+  width:100%; display:grid; grid-template-columns:1fr auto; align-items:center; gap:2px 16px; padding:12px 18px 14px;
+  background:var(--paper); border:3px solid var(--line); border-radius:24px; box-shadow:0 6px 0 rgba(110,68,35,.28),0 16px 22px rgba(90,40,15,.18);
+  animation:rise .35s cubic-bezier(.2,1.4,.4,1);
+}
+@keyframes rise{ 0%{ transform:translateY(14px) scale(.96); opacity:0; } 100%{ transform:none; opacity:1; } }
+.comment{ font-size:clamp(30px,8.4vw,44px); font-weight:900; line-height:1.15; letter-spacing:.04em; min-height:1.15em; }
+.comment.pop{ animation:pop .45s cubic-bezier(.2,1.8,.4,1); }
+@keyframes pop{ 0%{ transform:scale(.5); opacity:0; } 100%{ transform:none; opacity:1; } }
+.rscore{ text-align:right; font-size:clamp(34px,9.4vw,50px); font-weight:900; color:var(--tomato); line-height:1.1; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.rscore small{ font-size:.4em; margin-left:2px; color:var(--ink-soft); }
+.rdetail{ grid-column:1/-1; font-size:clamp(13px,3.6vw,15px); font-weight:700; color:var(--ink-soft); }
+.rdetail b{ color:var(--ink); }
+.rcard .btn{ grid-column:1/-1; margin-top:8px; width:100%; padding:12px 20px; font-size:20px; }
+.t-perfect{ color:var(--gold); text-shadow:0 2px 0 rgba(150,90,0,.25); }
+.t-great{ color:var(--green); }
+.t-ok{ color:var(--blue); }
+.t-meh{ color:var(--orange); }
+.t-bad{ color:var(--tomato-dark); }
+@media (min-width:600px){
+  .rcard{ grid-template-columns:auto 1fr auto; padding:12px 22px 14px; gap:0 22px; }
+  .rscore{ text-align:left; }
+  .rcard .btn{ grid-column:3; grid-row:1 / span 2; margin:0; width:auto; align-self:center; padding:14px 28px; }
+  .rdetail{ grid-column:1 / span 2; }
+}
+
+/* ---------- 結算畫面 ---------- */
+#screen-result{ gap:14px; padding-top:4px; }
+.summary{
+  position:relative; width:min(100%,560px); text-align:center; padding:20px 18px 22px;
+  background:linear-gradient(180deg,var(--paper),var(--cream)); border:3px solid var(--line); border-radius:30px;
+  box-shadow:0 8px 0 rgba(143,92,45,.35),0 24px 36px rgba(90,40,15,.22);
+}
+.summary::before{ content:""; position:absolute; inset:8px; border:2px dashed rgba(228,69,47,.35); border-radius:23px; pointer-events:none; }
+.sum-cap{ margin:0; font-weight:800; letter-spacing:.3em; padding-left:.3em; color:var(--ink-soft); font-size:14px; }
+.total{ margin:2px 0 0; font-size:clamp(58px,17vw,88px); font-weight:900; line-height:1.05; color:var(--tomato); text-shadow:0 4px 0 rgba(169,47,29,.25); font-variant-numeric:tabular-nums; }
+.total small{ font-size:.28em; color:var(--ink-soft); font-weight:800; margin-left:4px; text-shadow:none; }
+.scale{
+  margin:12px auto 0; padding:12px 14px 14px; max-width:420px; border-radius:22px; background:#fff; border:2px solid var(--line);
+  animation:rise .5s .1s both cubic-bezier(.2,1.4,.4,1);
+}
+.scale .who{ font-size:13px; font-weight:800; letter-spacing:.2em; color:var(--ink-soft); }
+.scale .emoji{ font-size:clamp(52px,15vw,68px); line-height:1.15; filter:drop-shadow(0 4px 3px rgba(80,40,10,.25)); }
+.scale .name{ font-size:clamp(26px,7.4vw,34px); font-weight:900; color:var(--tomato-dark); letter-spacing:.06em; }
+.scale .desc{ margin-top:2px; font-size:clamp(14px,3.9vw,16px); font-weight:700; color:var(--ink); }
+.scale .avg{ margin-top:6px; font-size:12px; font-weight:700; color:var(--ink-soft); }
+.ladder{ display:flex; justify-content:center; gap:2px; margin:12px 0 0; padding:0; list-style:none; }
+.ladder li{ flex:0 1 28px; height:28px; display:grid; place-items:center; font-size:16px; opacity:.35; filter:grayscale(1); transition:transform .3s; }
+.ladder li.on{ opacity:1; filter:none; transform:scale(1.5); position:relative; z-index:1; }
+.ladder li.passed{ opacity:.7; filter:grayscale(.4); }
+.best-row{ margin-top:14px; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px 14px; font-weight:800; color:var(--ink-soft); }
+.best-row b{ color:var(--ink); font-size:20px; font-variant-numeric:tabular-nums; }
+.badge{
+  display:inline-block; padding:3px 14px; border-radius:999px; font-weight:900; letter-spacing:.06em; color:#fff;
+  background:linear-gradient(180deg,#f3b52a,#e08e0b); box-shadow:0 3px 0 #a86205; animation:badge 1.2s ease-in-out infinite;
+}
+@keyframes badge{ 0%,100%{ transform:scale(1) rotate(-2deg); } 50%{ transform:scale(1.1) rotate(2deg); } }
+.breakdown{
+  width:min(100%,560px); border-collapse:separate; border-spacing:0; overflow:hidden; border:3px solid var(--line); border-radius:22px;
+  background:var(--paper); box-shadow:0 6px 0 rgba(143,92,45,.3); font-size:clamp(13px,3.7vw,16px);
+}
+.tbl-cap{ margin:0 0 6px; padding:0 8px; text-align:left; font-weight:900; color:var(--ink-soft); letter-spacing:.12em; font-size:14px; }
+.breakdown th{ background:var(--wood-3); color:#fff8e8; font-weight:800; padding:8px 6px; letter-spacing:.08em; font-size:.88em; }
+.breakdown td{ padding:7px 6px; text-align:center; border-top:1px solid #f0e0bb; font-variant-numeric:tabular-nums; }
+.breakdown tbody tr:nth-child(even) td{ background:#fff3d6; }
+.breakdown td.it{ text-align:left; padding-left:8px; white-space:nowrap; }
+.breakdown .itc{ display:flex; align-items:center; gap:6px; }
+.breakdown .itc img{ width:30px; height:30px; flex:none; }
+.breakdown td.sc{ font-weight:900; color:var(--tomato-dark); }
+.breakdown td.rn{ font-weight:900; color:var(--ink-soft); }
+.breakdown tfoot td{ background:var(--cream-2); font-weight:900; border-top:2px solid var(--line); }
+.table-wrap{ width:100%; }
+.again{ margin:6px 0 4px; }
+.res-grid{ width:100%; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.res-side{ width:min(100%,560px); display:flex; flex-direction:column; align-items:center; gap:12px; }
+@media (min-width:1040px){
+  #screen-result{ padding-top:36px; }
+  .res-grid{ flex-direction:row; align-items:flex-start; justify-content:center; gap:30px; max-width:1160px; }
+  .summary{ width:500px; flex:none; }
+  .res-side{ width:540px; flex:none; }
+}
+.confetti{ position:fixed; top:-16px; width:10px; height:16px; z-index:30; pointer-events:none; border-radius:2px; animation:fall linear forwards; }
+@keyframes fall{ to{ transform:translate3d(var(--dx),110vh,0) rotate(var(--rot)); opacity:.9; } }
+
+/* ---------- 頁尾 ---------- */
+.foot{ position:relative; z-index:1; margin-top:auto; padding:16px 12px 4px; text-align:center; font-size:12px; font-weight:600; color:var(--ink-soft); }
+.foot a{ color:var(--tomato-dark); text-underline-offset:2px; }
+
+@media (max-width:420px){
+  .app{ padding-left:8px; padding-right:8px; }
+  .pill{ padding:5px 9px; }
+  .target{ padding:5px 12px 6px; }
+  .btn{ padding:13px 22px; }
+}
+@media (prefers-reduced-motion:reduce){
+  .logo .l-a,.logo .l-b,.demo .pa,.demo .pb,.demo .knife,.demo .tag,.decor img,.badge{ animation:none !important; }
+}
+</style>
+</head>
+<body>
+<div class="app" id="app" data-screen="start">
+  <div class="topbar">
+    <div class="brand">切一半<small>Cut In Half</small></div>
+    <button class="icon-btn" id="muteBtn" type="button" aria-label="音效開關" aria-pressed="false" title="音效開/關">
+      <svg class="ic-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16.2 8.6a5 5 0 0 1 0 6.8M18.8 5.9a8.6 8.6 0 0 1 0 12.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg class="ic-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <!-- 開始畫面 -->
+  <section class="screen" id="screen-start">
+    <div class="hero">
+      <h1 class="logo" aria-label="切一半">
+        <span class="l-size" aria-hidden="true">切一半</span>
+        <span class="l-half l-a" aria-hidden="true">切一半</span>
+        <span class="l-half l-b" aria-hidden="true">切一半</span>
+        <span class="l-slash" aria-hidden="true"></span>
+      </h1>
+      <p class="subtitle">Cut In Half</p>
+      <div class="demo" aria-hidden="true">
+        <img class="piece pa" id="demoA" alt=""><img class="piece pb" id="demoB" alt="">
+        <span class="knife"></span><span class="tag t1">42%</span><span class="tag t2">58%</span>
+      </div>
+      <p class="rule"><span class="nb">拖曳畫出<b>一刀</b>，</span><span class="nb">把食物切成指定的面積比例，</span><span class="nb">5 回合考驗你的目測直覺！</span></p>
+      <button class="btn big" id="startBtn" type="button" disabled>開始</button>
+      <p class="best-line">目前最高分<b id="startBest">0</b></p>
+    </div>
+  </section>
+
+  <!-- 遊戲畫面 -->
+  <section class="screen" id="screen-game" hidden>
+    <header class="hud">
+      <div class="pill"><span class="lbl">回合</span><span class="val"><span id="hudRound">1</span><small>/5</small></span></div>
+      <div class="target" aria-live="polite">
+        <span class="lbl">目標比例</span>
+        <span class="ratio" id="ratio"><span id="ratioL">30</span><i>:</i><span id="ratioR">70</span></span>
+        <span class="cap" id="ratioCap">小塊佔 30%</span>
+      </div>
+      <div class="pill right"><span class="lbl">累計分數</span><span class="val" id="hudScore">0</span></div>
+    </header>
+    <div class="board-wrap">
+      <div class="board" id="board">
+        <div class="board-surface"></div>
+        <div class="board-hole"></div>
+        <canvas id="stage" tabindex="-1" aria-label="切割區：按住滑鼠或手指拖曳出一條線，放開即切下"></canvas>
+        <div class="toast" id="toast" role="status"></div>
+      </div>
+    </div>
+    <div class="result" id="result" aria-live="polite">
+      <div class="hint" id="hint">
+        <svg viewBox="0 0 48 24" aria-hidden="true"><path d="M2 15 Q10 3 31 5 L37 6.5 L37 15 Z" fill="#e9eef2" stroke="#6b7580" stroke-width="1.6" stroke-linejoin="round"/><rect x="37" y="6" width="9" height="9" rx="3" fill="#7a4a24" stroke="#4a2c17" stroke-width="1.4"/><circle cx="40" cy="10.5" r="1" fill="#e9c27a"/><circle cx="44" cy="10.5" r="1" fill="#e9c27a"/></svg>
+        <span id="hintText">按住拖曳畫出一刀，放開就切！</span>
+      </div>
+      <div class="rcard" id="rcard" hidden>
+        <div class="comment" id="comment">&nbsp;</div>
+        <div class="rscore"><span id="rscore">+0</span><small>分</small></div>
+        <div class="rdetail" id="rdetail"></div>
+        <button class="btn" id="nextBtn" type="button" hidden>下一回合</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 結算畫面 -->
+  <section class="screen" id="screen-result" hidden>
+   <div class="res-grid">
+    <div class="summary">
+      <p class="sum-cap">本局總分</p>
+      <div class="total"><span id="totalNum">0</span><small>/ 5000</small></div>
+      <div class="scale" id="scaleBox">
+        <div class="who">你是一台……</div>
+        <div class="emoji" id="scEmoji"></div>
+        <div class="name" id="scName"></div>
+        <div class="desc" id="scDesc"></div>
+        <div class="avg" id="scAvg"></div>
+        <ol class="ladder" id="ladder" aria-label="稱號等級"></ol>
+      </div>
+      <div class="best-row" id="bestRow"></div>
+    </div>
+    <div class="res-side">
+     <div class="table-wrap">
+      <h2 class="tbl-cap">5 回合明細</h2>
+      <table class="breakdown">
+        <thead><tr><th>回合</th><th>物品</th><th>目標</th><th>實際</th><th>分數</th></tr></thead>
+        <tbody id="tbody"></tbody>
+        <tfoot><tr><td colspan="4">合計</td><td id="tfootTotal" class="sc">0</td></tr></tfoot>
+      </table>
+     </div>
+     <button class="btn big again" id="againBtn" type="button">再玩一次</button>
+    </div>
+   </div>
+  </section>
+
+  <footer class="foot">
+    食物圖示：<a href="https://github.com/microsoft/fluentui-emoji" target="_blank" rel="noopener">Fluent Emoji</a> © Microsoft,
+    <a href="https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+  </footer>
+</div>
+<div class="decor" id="decor" aria-hidden="true"></div>
+
+<noscript><p style="position:relative;z-index:2;text-align:center;padding:20px">此遊戲需要啟用 JavaScript 才能遊玩。</p></noscript>
+
+<script>
+(() => {
+'use strict';
+
+/* =====================================================================
+ * 資料：30 個物品（base64 內嵌，由 src/build.py 於建置時填入）
+ * ===================================================================== */
+const ITEMS = /*__ITEMS__*/[];
+
+const TOTAL_ROUNDS = 5;
+const MIN_DRAG = 30;                       // 最短拖曳距離（CSS px）
+const RATIOS = [                            // 比例池（small = 較小塊的目標 %）
+  { small: 50,       label: '50 : 50' },
+  { small: 40,       label: '40 : 60' },
+  { small: 100 / 3,  label: '1 : 2'   },
+  { small: 30,       label: '30 : 70' },
+  { small: 25,       label: '1 : 3'   },
+  { small: 20,       label: '20 : 80' },
+];
+const TIERS = [                             // 結算稱號（依總分由高到低）
+  { min: 4970, emoji: '🏛️', name: '國際公斤原器',   avg: '≤ 0.08%', desc: '你不是在秤，你就是標準本身' },
+  { min: 4920, emoji: '🔬', name: '實驗室分析天平', avg: '≤ 0.2%',  desc: '精準到 0.0001 公克，人形儀器' },
+  { min: 4840, emoji: '🌿', name: '中藥行戥子',     avg: '≤ 0.4%',  desc: '一錢一分都不差，老師傅點頭' },
+  { min: 4750, emoji: '💎', name: '珠寶秤',         avg: '≤ 0.7%',  desc: '秤黃金都不會被客訴' },
+  { min: 4630, emoji: '📦', name: '郵局包裹秤',     avg: '≤ 1.0%',  desc: '運費算得剛剛好' },
+  { min: 4500, emoji: '🍳', name: '廚房電子秤',     avg: '≤ 1.4%',  desc: '照食譜烘焙不會失敗' },
+  { min: 4340, emoji: '🛁', name: '體重計',         avg: '≤ 1.8%',  desc: '準是準，但你常常不想相信它' },
+  { min: 4170, emoji: '🥬', name: '菜市場彈簧秤',   avg: '≤ 2.3%',  desc: '大概啦，老闆再送你一把蔥' },
+  { min: 3800, emoji: '🧳', name: '行李秤',         avg: '≤ 3.3%',  desc: '機場櫃台前會多付一點超重費' },
+  { min: 3000, emoji: '🚛', name: '卡車地磅',       avg: '≤ 5.8%',  desc: '秤卡車很準，秤蛋糕就算了' },
+  { min: -1,   emoji: '✋', name: '用手掂一掂',     avg: '> 5.8%',  desc: '「嗯……差不多吧？」' },
+];
+
+/* ---------------- 計分與評語（規格書第四節） ---------------- */
+function scoreFor(e){ return e >= 20 ? 0 : Math.round(1000 * Math.pow(1 - e / 20, 1.5)); }
+function commentFor(e){
+  if (e < 0.5) return { text: '完美！',   cls: 't-perfect', level: 4 };
+  if (e < 2)   return { text: '超準！',   cls: 't-great',   level: 3 };
+  if (e < 5)   return { text: '還不錯',   cls: 't-ok',      level: 2 };
+  if (e < 10)  return { text: '差一點…', cls: 't-meh',     level: 1 };
+  return              { text: '你確定？', cls: 't-bad',     level: 0 };
+}
+function tierIndexFor(total){ return TIERS.findIndex(t => total >= t.min); }
+
+/* ---------------- 小工具 ---------------- */
+const $ = id => document.getElementById(id);
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+const easeOutBack = t => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const fmt1 = n => n.toFixed(1);
+const rand = n => Math.floor(Math.random() * n);
+
+// localStorage 一律包 try/catch,失敗時退回記憶體
+const store = (() => {
+  const mem = {};
+  return {
+    get(k){ try { const v = localStorage.getItem('cutInHalf.' + k); return v === null ? (mem[k] ?? null) : v; } catch (e) { return mem[k] ?? null; } },
+    set(k, v){ mem[k] = String(v); try { localStorage.setItem('cutInHalf.' + k, String(v)); } catch (e) { /* ignore */ } },
+  };
+})();
+
+/* =====================================================================
+ * 音效：Web Audio API 即時合成
+ * ===================================================================== */
+const Sfx = (() => {
+  let ac = null, master = null, noise = null;
+  let muted = store.get('muted') === '1';
+  const VOL = 0.7;
+
+  function init(){
+    if (ac) return ac;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return null;
+    try {
+      ac = new AC();
+      master = ac.createGain();
+      master.gain.value = muted ? 0 : VOL;
+      const comp = ac.createDynamicsCompressor();
+      master.connect(comp); comp.connect(ac.destination);
+      const len = Math.floor(ac.sampleRate * 0.7);
+      noise = ac.createBuffer(1, len, ac.sampleRate);
+      const d = noise.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+    } catch (e) { ac = null; }
+    return ac;
+  }
+  function unlock(){ const a = init(); if (a && a.state !== 'running') a.resume().catch(() => {}); }
+  function ctx(){ if (muted) return null; const a = init(); if (!a) return null; if (a.state === 'suspended') a.resume().catch(() => {}); return a; }
+
+  function tone(freq, t0, dur, o = {}){
+    const { type = 'sine', gain = 0.25, slideTo = null, attack = 0.008, lp = 0 } = o;
+    const osc = ac.createOscillator(), g = ac.createGain();
+    osc.type = type; osc.frequency.setValueAtTime(freq, t0);
+    if (slideTo) osc.frequency.exponentialRampToValueAtTime(slideTo, t0 + dur);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(gain, t0 + attack);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    let last = osc;
+    if (lp){ const f = ac.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = lp; last.connect(f); last = f; }
+    last.connect(g); g.connect(master);
+    osc.start(t0); osc.stop(t0 + dur + 0.05);
+  }
+  function burst(t0, dur, o = {}){
+    const { f0 = 800, f1 = 800, q = 1, gain = 0.5, type = 'bandpass', attack = 0.01 } = o;
+    const src = ac.createBufferSource(); src.buffer = noise;
+    const f = ac.createBiquadFilter(); f.type = type; f.Q.value = q;
+    f.frequency.setValueAtTime(f0, t0);
+    if (f1 !== f0) f.frequency.exponentialRampToValueAtTime(f1, t0 + dur);
+    const g = ac.createGain();
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(gain, t0 + attack);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    src.connect(f); f.connect(g); g.connect(master);
+    src.start(t0); src.stop(t0 + dur + 0.05);
+  }
+  const guard = fn => (...a) => { try { const c = ctx(); if (c) fn(c, c.currentTime + 0.01, ...a); } catch (e) { /* 音效失敗不影響遊戲 */ } };
+
+  return {
+    unlock,
+    get muted(){ return muted; },
+    setMuted(v){ muted = !!v; store.set('muted', muted ? '1' : '0'); if (master) master.gain.value = muted ? 0 : VOL; if (!muted) unlock(); },
+    // 切割聲：白噪音掃頻「唰」+ 砧板「咚」
+    cut: guard((c, t) => {
+      burst(t, 0.22, { f0: 500, f1: 6200, q: 0.9, gain: 0.9, attack: 0.03 });
+      burst(t + 0.02, 0.16, { f0: 2500, f1: 9000, q: 0.6, gain: 0.25, type: 'highpass', attack: 0.02 });
+      tone(170, t + 0.15, 0.14, { slideTo: 55, gain: 0.6 });
+      burst(t + 0.15, 0.06, { f0: 900, f1: 500, q: 0.7, gain: 0.35, type: 'lowpass' });
+    }),
+    // 評語音：高分上升和弦、低分下降「噗」
+    rate: guard((c, t, level) => {
+      if (level >= 4){ [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, i) => { tone(f, t + i * 0.075, 0.55, { type: 'triangle', gain: 0.22 }); tone(f * 2, t + i * 0.075, 0.4, { gain: 0.07 }); }); }
+      else if (level === 3){ [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => tone(f, t + i * 0.08, 0.45, { type: 'triangle', gain: 0.2 })); }
+      else if (level === 2){ [440, 554.37, 659.25].forEach((f, i) => tone(f, t + i * 0.09, 0.35, { type: 'triangle', gain: 0.18 })); }
+      else if (level === 1){ tone(330, t, 0.16, { type: 'triangle', gain: 0.2 }); tone(262, t + 0.15, 0.26, { type: 'triangle', gain: 0.2 }); }
+      else { tone(260, t, 0.5, { type: 'sawtooth', slideTo: 70, gain: 0.3, lp: 700 }); burst(t, 0.12, { f0: 700, f1: 300, q: 0.7, gain: 0.25, type: 'lowpass' }); }
+    }),
+    miss: guard((c, t) => { tone(300, t, 0.28, { type: 'square', slideTo: 110, gain: 0.14, lp: 900 }); }),
+    short: guard((c, t) => { tone(520, t, 0.07, { gain: 0.12 }); }),
+    click: guard((c, t) => { tone(740, t, 0.07, { type: 'triangle', gain: 0.18, slideTo: 1100 }); }),
+    // 結算：依稱號等級
+    finale: guard((c, t, tier) => {
+      if (tier <= 5){
+        const seq = [523.25, 659.25, 783.99, 1046.5, 1318.5, 1568];
+        seq.forEach((f, i) => tone(f, t + i * 0.09, 0.6, { type: 'triangle', gain: 0.2 }));
+        [523.25, 659.25, 783.99, 1046.5].forEach(f => tone(f, t + 0.62, 1.1, { type: 'triangle', gain: 0.12 }));
+      } else if (tier <= 8){
+        [392, 493.88, 587.33].forEach((f, i) => tone(f, t + i * 0.12, 0.5, { type: 'triangle', gain: 0.2 }));
+      } else {
+        [392, 349.23, 293.66].forEach((f, i) => tone(f, t + i * 0.16, 0.45, { type: 'triangle', gain: 0.2 }));
+      }
+    }),
+  };
+})();
+
+/* =====================================================================
+ * 圖片載入與面積資料
+ * ===================================================================== */
+const IMGS = ITEMS.map(it => { const im = new Image(); im.decoding = 'async'; im.src = it.src; return im; });
+const imagesReady = Promise.all(IMGS.map(im =>
+  (im.decode ? im.decode() : new Promise(r => { im.onload = r; })).catch(() => {})
+));
+
+// 每個物品只算一次：所有 alpha > 128 的像素座標（原圖解析度）與外框
+const itemCache = [];
+function getItemData(i){
+  if (itemCache[i]) return itemCache[i];
+  const im = IMGS[i];
+  const w = im.naturalWidth || 256, h = im.naturalHeight || 256;
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  const x = c.getContext('2d', { willReadFrequently: true });
+  x.drawImage(im, 0, 0, w, h);
+  const px = x.getImageData(0, 0, w, h).data;
+  let n = 0;
+  for (let k = 3; k < px.length; k += 4) if (px[k] > 128) n++;
+  const xs = new Int16Array(n), ys = new Int16Array(n);
+  let minx = w, miny = h, maxx = -1, maxy = -1, j = 0;
+  for (let y = 0; y < h; y++){
+    for (let xx = 0; xx < w; xx++){
+      if (px[(y * w + xx) * 4 + 3] > 128){
+        xs[j] = xx; ys[j] = y; j++;
+        if (xx < minx) minx = xx; if (xx > maxx) maxx = xx;
+        if (y < miny) miny = y;   if (y > maxy) maxy = y;
+      }
+    }
+  }
+  return itemCache[i] = {
+    xs, ys, n, w, h, minx, miny, maxx, maxy,
+    bw: maxx - minx + 1, bh: maxy - miny + 1,
+    bcx: (minx + maxx + 1) / 2, bcy: (miny + maxy + 1) / 2,
+  };
+}
+
+// 面積計算：刀線 = 通過 P、方向 D(皆為原圖座標)的無限直線。
+// 以外積 cross(D, pixel − P) 的正負號判斷像素在線的哪一側（取像素中心）。
+function computeCut(data, P, D){
+  const { xs, ys, n } = data;
+  let a = 0, ax = 0, ay = 0, bx = 0, by = 0;
+  for (let i = 0; i < n; i++){
+    const px = xs[i] + 0.5, py = ys[i] + 0.5;
+    const cr = D.x * (py - P.y) - D.y * (px - P.x);
+    if (cr > 0){ a++; ax += px; ay += py; } else { bx += px; by += py; }
+  }
+  const b = n - a;
+  return {
+    a, b, n,
+    pctA: a / n * 100, pctB: b / n * 100,
+    cA: a ? { x: ax / a, y: ay / a } : null,
+    cB: b ? { x: bx / b, y: by / b } : null,
+  };
+}
+
+/* =====================================================================
+ * 遊戲狀態
+ * ===================================================================== */
+const G = {
+  round: 0, total: 0, rounds: [], queue: [], fixedRatios: null,
+  cur: null, phase: 'idle', token: 0,
+};
+const R = {            // 繪圖狀態
+  popT0: 0, drag: null, knife: null, split: null, loop: 0,
+};
+
+const screens = { start: $('screen-start'), game: $('screen-game'), result: $('screen-result') };
+const appEl = $('app');
+function showScreen(name){
+  for (const k in screens) screens[k].hidden = (k !== name);
+  appEl.dataset.screen = name;
+  window.scrollTo(0, 0);
+  if (name === 'game') startLoop(); else stopLoop();
+}
+
+/* =====================================================================
+ * 畫布與座標
+ * ===================================================================== */
+const canvas = $('stage');
+const ctx = canvas.getContext('2d');
+let W = 0, H = 0, dpr = 1;
+
+function resizeCanvas(){
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (!w || !h) return;
+  dpr = Math.min(window.devicePixelRatio || 1, 3);
+  const pw = Math.round(w * dpr), ph = Math.round(h * dpr);
+  if (W !== w || H !== h || canvas.width !== pw || canvas.height !== ph){
+    W = w; H = h; canvas.width = pw; canvas.height = ph;
+    if (R.split) buildSplit();
+  }
+}
+if ('ResizeObserver' in window) new ResizeObserver(resizeCanvas).observe(canvas);
+window.addEventListener('resize', resizeCanvas);
+
+// 物品在畫布上的顯示位置：外框置中，最長邊 = 66% 畫布
+function geom(){
+  const d = G.cur.data;
+  const target = Math.min(W, H) * 0.66;
+  const scale = Math.min(target / Math.max(d.bw, d.bh), 1.9);
+  return { scale, cx: W / 2, cy: H / 2, bcx: d.bcx, bcy: d.bcy, iw: d.w, ih: d.h };
+}
+const scrToImg = (x, y, g) => ({ x: (x - g.cx) / g.scale + g.bcx, y: (y - g.cy) / g.scale + g.bcy });
+const imgToScr = (x, y, g) => ({ x: g.cx + (x - g.bcx) * g.scale, y: g.cy + (y - g.bcy) * g.scale });
+
+function pointerPos(e){
+  const r = canvas.getBoundingClientRect();
+  const sx = r.width ? W / r.width : 1, sy = r.height ? H / r.height : 1;
+  return { x: (e.clientX - r.left) * sx, y: (e.clientY - r.top) * sy };
+}
+
+/* =====================================================================
+ * 繪製
+ * ===================================================================== */
+function drawItemAt(c, g){
+  c.drawImage(IMGS[G.cur.idx], g.cx - g.bcx * g.scale, g.cy - g.bcy * g.scale, g.iw * g.scale, g.ih * g.scale);
+}
+function setShadow(c, on){
+  if (on){ c.shadowColor = 'rgba(50,24,6,.40)'; c.shadowBlur = 16 * dpr; c.shadowOffsetY = 8 * dpr; c.shadowOffsetX = 0; }
+  else { c.shadowColor = 'transparent'; c.shadowBlur = 0; c.shadowOffsetY = 0; }
+}
+
+// 切開後：把兩半各自預先畫到小畫布上（以刀線半平面裁切）
+function buildSplit(){
+  const sp = R.split; if (!sp) return;
+  const g = geom();
+  const P = imgToScr(sp.P.x, sp.P.y, g);
+  const len = Math.hypot(sp.D.x, sp.D.y);
+  const dx = sp.D.x / len, dy = sp.D.y / len;     // 單位方向（縮放一致，方向不變）
+  const nx = -dy, ny = dx;                         // A 側（cross > 0）的法向
+  const box = Math.ceil(Math.min(W, H) * 0.66 + 16);
+  const bx = Math.round(g.cx - box / 2), by = Math.round(g.cy - box / 2);
+  const L = (W + H) * 2, eps = 0.7;
+  sp.nx = nx; sp.ny = ny; sp.box = box; sp.bx = bx; sp.by = by; sp.line = { P, dx, dy };
+  sp.pieces = [0, 1].map(k => {
+    const s = k === 0 ? 1 : -1;
+    const cv = document.createElement('canvas');
+    cv.width = Math.round(box * dpr); cv.height = Math.round(box * dpr);
+    const c = cv.getContext('2d');
+    c.scale(dpr, dpr); c.translate(-bx, -by);
+    c.imageSmoothingQuality = 'high';
+    const ox = P.x - nx * s * eps, oy = P.y - ny * s * eps;      // 稍微越過刀線，避免接縫
+    c.beginPath();
+    c.moveTo(ox - dx * L, oy - dy * L);
+    c.lineTo(ox + dx * L, oy + dy * L);
+    c.lineTo(ox + dx * L + nx * s * L, oy + dy * L + ny * s * L);
+    c.lineTo(ox - dx * L + nx * s * L, oy - dy * L + ny * s * L);
+    c.closePath(); c.clip();
+    drawItemAt(c, g);
+    const cen = k === 0 ? sp.res.cA : sp.res.cB;
+    const cs = imgToScr(cen.x, cen.y, g);
+    return { cv, cx: cs.x, cy: cs.y };
+  });
+}
+
+function pillPath(c, x, y, w, h, r){
+  c.beginPath();
+  c.moveTo(x + r, y); c.lineTo(x + w - r, y); c.arcTo(x + w, y, x + w, y + r, r);
+  c.lineTo(x + w, y + h - r); c.arcTo(x + w, y + h, x + w - r, y + h, r);
+  c.lineTo(x + r, y + h); c.arcTo(x, y + h, x, y + h - r, r);
+  c.lineTo(x, y + r); c.arcTo(x, y, x + r, y, r); c.closePath();
+}
+
+function drawSplit(now){
+  const sp = R.split;
+  const t = clamp((now - sp.t0) / sp.dur, 0, 1), e = easeOutCubic(t);
+  const off = Math.min(W, H) * 0.062 * e;
+  const rot = sp.rot * e;
+  const labels = [];
+  for (let k = 0; k < 2; k++){
+    const p = sp.pieces[k], s = k === 0 ? 1 : -1;
+    const ox = sp.nx * s * off, oy = sp.ny * s * off;
+    ctx.save();
+    ctx.translate(p.cx + ox, p.cy + oy); ctx.rotate(rot * s); ctx.translate(-p.cx, -p.cy);
+    setShadow(ctx, true);
+    ctx.drawImage(p.cv, sp.bx, sp.by, sp.box, sp.box);
+    ctx.restore();
+    labels.push({ x: p.cx + ox, y: p.cy + oy, text: sp.texts[k], small: sp.smallSide === k });
+  }
+  // 百分比標籤（在滑開後淡入）
+  const la = clamp((now - sp.t0 - sp.dur * 0.45) / 220, 0, 1);
+  if (la <= 0) return;
+  const fs = Math.max(15, Math.min(W, H) * 0.046);
+  ctx.save();
+  ctx.font = `900 ${fs}px "Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  const h = fs * 1.7;
+  labels.forEach(l => { l.w = ctx.measureText(l.text).width + fs * 1.3; l.h = h; });
+  const A = labels[0], B = labels[1];
+  const ddx = A.x - B.x, ddy = A.y - B.y;
+  const px = (A.w + B.w) / 2 - Math.abs(ddx), py = h - Math.abs(ddy);
+  if (px > 0 && py > 0){
+    if (px < py){ const m = px / 2 * (ddx >= 0 ? 1 : -1); A.x += m; B.x -= m; }
+    else { const m = py / 2 * (ddy >= 0 ? 1 : -1); A.y += m; B.y -= m; }
+  }
+  ctx.globalAlpha = la;
+  labels.forEach(l => {
+    const x = clamp(l.x, l.w / 2 + 4, W - l.w / 2 - 4), y = clamp(l.y, h / 2 + 4, H - h / 2 - 4) - (1 - la) * 6;
+    ctx.save();
+    ctx.translate(x, y); ctx.scale(0.8 + 0.2 * la, 0.8 + 0.2 * la);
+    pillPath(ctx, -l.w / 2, -h / 2, l.w, h, h / 2);
+    ctx.shadowColor = 'rgba(40,18,4,.35)'; ctx.shadowBlur = 8 * dpr; ctx.shadowOffsetY = 3 * dpr;
+    ctx.fillStyle = l.small ? '#e4452f' : '#fff7e6'; ctx.fill();
+    ctx.shadowColor = 'transparent';
+    ctx.lineWidth = 2.5; ctx.strokeStyle = l.small ? '#a92f1d' : '#6e4423'; ctx.stroke();
+    ctx.fillStyle = l.small ? '#fff' : '#4a2c17';
+    ctx.fillText(l.text, 0, 1);
+    ctx.restore();
+  });
+  ctx.restore();
+}
+
+function strokeSeg(ax, ay, bx, by, w, style){
+  ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by);
+  ctx.lineWidth = w; ctx.strokeStyle = style; ctx.stroke();
+}
+// 刀光：白色半透明發光線條（拖曳中為線段 + 淡淡的延伸虛線;放開瞬間延伸線閃現後淡出）
+function drawKnife(now){
+  const k = R.knife; if (!k) return;
+  let a = 1;
+  if (!k.active){
+    const t = (now - k.t0) / k.fade;
+    if (t >= 1){ R.knife = null; return; }
+    a = 1 - t;
+  }
+  const dx = k.x2 - k.x1, dy = k.y2 - k.y1, len = Math.hypot(dx, dy) || 1;
+  const ux = dx / len, uy = dy / len, L = (W + H) * 2;
+  ctx.save();
+  ctx.lineCap = 'round';
+  if (k.active){
+    ctx.setLineDash([7, 9]);
+    strokeSeg(k.x1 - ux * L, k.y1 - uy * L, k.x1 + ux * L, k.y1 + uy * L, 2, 'rgba(255,255,255,.3)');
+    ctx.setLineDash([]);
+  } else {
+    ctx.shadowColor = `rgba(255,255,255,${a})`; ctx.shadowBlur = 20 * dpr;
+    strokeSeg(k.x1 - ux * L, k.y1 - uy * L, k.x1 + ux * L, k.y1 + uy * L, 2 + 4 * a, `rgba(255,255,255,${0.85 * a})`);
+    ctx.shadowBlur = 0;
+  }
+  strokeSeg(k.x1, k.y1, k.x2, k.y2, 7, `rgba(60,28,8,${0.25 * a})`);          // 深色底暈，淺色食物上也看得見
+  const gr = ctx.createLinearGradient(k.x1, k.y1, k.x2, k.y2);
+  gr.addColorStop(0, `rgba(255,255,255,${0.3 * a})`); gr.addColorStop(1, `rgba(255,255,255,${0.98 * a})`);
+  ctx.shadowColor = `rgba(255,255,255,${a})`; ctx.shadowBlur = 16 * dpr;
+  strokeSeg(k.x1, k.y1, k.x2, k.y2, 6, `rgba(255,255,255,${0.35 * a})`);
+  strokeSeg(k.x1, k.y1, k.x2, k.y2, 3, gr);
+  ctx.shadowBlur = 22 * dpr;
+  ctx.fillStyle = `rgba(255,255,255,${a})`;
+  ctx.beginPath(); ctx.arc(k.x2, k.y2, 4.5, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+
+function draw(now){
+  if (!G.cur || !W) return;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+  if (R.split && R.split.pieces){
+    drawSplit(now);
+  } else {
+    const g = geom();
+    const t = clamp((now - R.popT0) / 440, 0, 1);
+    const s = t < 1 ? easeOutBack(t) : 1;
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, t * 3);
+    ctx.translate(g.cx, g.cy); ctx.scale(s, s); ctx.translate(-g.cx, -g.cy);
+    setShadow(ctx, true);
+    drawItemAt(ctx, g);
+    ctx.restore();
+  }
+  drawKnife(now);
+}
+function startLoop(){
+  if (R.loop) return;
+  const step = now => { resizeCanvas(); draw(now); R.loop = requestAnimationFrame(step); };
+  R.loop = requestAnimationFrame(step);
+}
+function stopLoop(){ if (R.loop) cancelAnimationFrame(R.loop); R.loop = 0; }
+
+/* =====================================================================
+ * HUD / 提示
+ * ===================================================================== */
+const hudRound = $('hudRound'), hudScore = $('hudScore');
+const ratioEl = $('ratio'), ratioL = $('ratioL'), ratioR = $('ratioR'), ratioCap = $('ratioCap');
+const hint = $('hint'), hintText = $('hintText'), rcard = $('rcard');
+const commentEl = $('comment'), rscoreEl = $('rscore'), rdetail = $('rdetail'), nextBtn = $('nextBtn');
+const toastEl = $('toast'), boardEl = $('board');
+let toastTimer = 0;
+
+function toast(msg, miss){
+  clearTimeout(toastTimer);
+  toastEl.textContent = msg;
+  toastEl.classList.toggle('miss', !!miss);
+  void toastEl.offsetWidth;
+  toastEl.classList.add('show');
+  toastTimer = setTimeout(() => toastEl.classList.remove('show'), miss ? 1000 : 1500);
+}
+function setHint(msg, warn){
+  hintText.textContent = msg;
+  hint.classList.toggle('warn', !!warn);
+}
+function tween(from, to, dur, fn, token){
+  return new Promise(res => {
+    const t0 = performance.now();
+    (function step(now){
+      const t = clamp((now - t0) / dur, 0, 1);
+      fn(from + (to - from) * easeOutCubic(t), t);
+      if (t < 1 && token === G.token) requestAnimationFrame(step); else res();
+    })(t0);
+  });
+}
+
+/* =====================================================================
+ * 遊戲流程
+ * ===================================================================== */
+function pickDistinct(n){
+  const idx = ITEMS.map((_, i) => i);
+  for (let i = idx.length - 1; i > 0; i--){ const j = rand(i + 1); [idx[i], idx[j]] = [idx[j], idx[i]]; }
+  return idx.slice(0, n);
+}
+
+// opts 只供自動化測試使用：{ items:[索引×5], ratios:[比例池索引×5] }
+function startGame(opts = {}){
+  Sfx.unlock();
+  G.token++;
+  G.round = 0; G.total = 0; G.rounds = [];
+  G.queue = opts.items ? opts.items.slice() : pickDistinct(TOTAL_ROUNDS);
+  G.fixedRatios = opts.ratios ? opts.ratios.slice() : null;
+  hudScore.textContent = '0';
+  showScreen('game');
+  resizeCanvas();
+  beginRound();
+}
+
+function beginRound(){
+  const idx = G.queue[G.round];
+  const ratio = G.fixedRatios ? RATIOS[G.fixedRatios[G.round]] : RATIOS[rand(RATIOS.length)];
+  G.cur = { idx, ratio, data: getItemData(idx) };
+  R.split = null; R.knife = null; R.drag = null; R.popT0 = performance.now();
+  G.phase = 'ready';
+  canvas.classList.remove('locked');
+  hudRound.textContent = String(G.round + 1);
+  const [l, r] = ratio.label.split(' : ');
+  ratioL.textContent = l; ratioR.textContent = r;
+  ratioCap.textContent = `小塊佔 ${+ratio.small.toFixed(1)}%`;
+  ratioEl.classList.remove('bump'); void ratioEl.offsetWidth; ratioEl.classList.add('bump');
+  rcard.hidden = true; nextBtn.hidden = true;
+  hint.hidden = false; setHint('按住拖曳畫出一刀，放開就切！');
+  toastEl.classList.remove('show');
+}
+
+function onMiss(d){
+  G.phase = 'cutting';
+  R.knife = { x1: d.x1, y1: d.y1, x2: d.x2, y2: d.y2, active: false, t0: performance.now(), fade: 450 };
+  Sfx.miss();
+  toast('沒切到！', true);
+  setHint('刀要劃過食物才算數，再切一次（不扣分）', true);
+  boardEl.classList.remove('shake'); void boardEl.offsetWidth; boardEl.classList.add('shake');
+  setTimeout(() => { if (G.phase === 'cutting' && !R.split) G.phase = 'ready'; }, 500);
+}
+
+async function performCut(d){
+  const g = geom();
+  const P = scrToImg(d.x1, d.y1, g), Q = scrToImg(d.x2, d.y2, g);
+  const D = { x: Q.x - P.x, y: Q.y - P.y };
+  const res = computeCut(G.cur.data, P, D);
+  if (res.a === 0 || res.b === 0){ onMiss(d); return; }
+
+  G.phase = 'cutting';
+  canvas.classList.add('locked');
+  const token = ++G.token;
+  const now = performance.now();
+
+  // 計分（以未四捨五入的實際面積百分比）
+  const small = Math.min(res.pctA, res.pctB);
+  const e = Math.abs(small - G.cur.ratio.small);
+  const score = scoreFor(e);
+  const cm = commentFor(e);
+  const tenthsA = Math.round(res.pctA * 10), tenthsB = 1000 - tenthsA;       // 兩側加起來必為 100.0
+  const smallSide = res.a <= res.b ? 0 : 1;
+  const smallTenths = Math.min(tenthsA, tenthsB);
+  const rec = {
+    idx: G.cur.idx, name: ITEMS[G.cur.idx].name, target: G.cur.ratio.label,
+    small: smallTenths / 10, large: (1000 - smallTenths) / 10, e, score,
+  };
+  G.rounds.push(rec);
+
+  R.split = {
+    t0: now, dur: 520, P, D, res, smallSide, rot: (Math.random() < 0.5 ? -1 : 1) * (0.045 + Math.random() * 0.03),
+    texts: [fmt1(tenthsA / 10) + '%', fmt1(tenthsB / 10) + '%'],
+  };
+  buildSplit();
+  R.knife = { x1: d.x1, y1: d.y1, x2: d.x2, y2: d.y2, active: false, t0: now, fade: 380 };
+  Sfx.cut();
+  try { if (navigator.vibrate) navigator.vibrate(14); } catch (err) { /* ignore */ }
+
+  // 時間軸：滑開 → 分數跳動 → 評語 → 下一回合
+  hint.hidden = true;
+  await sleep(560); if (token !== G.token) return;
+  rcard.hidden = false;
+  try { rcard.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } catch (err) { /* ignore */ }
+  commentEl.className = 'comment'; commentEl.innerHTML = '&nbsp;';
+  rscoreEl.textContent = '+0';
+  rdetail.innerHTML = `目標 <b>${G.cur.ratio.label}</b> · 你切出 <b>${fmt1(rec.small)} : ${fmt1(rec.large)}</b> · 誤差 <b>${fmt1(e)}%</b>`;
+  await tween(0, score, 500 + score * 0.45, v => { rscoreEl.textContent = '+' + Math.round(v); }, token);
+  if (token !== G.token) return;
+  rscoreEl.textContent = '+' + score;
+  commentEl.textContent = cm.text;
+  commentEl.className = 'comment pop ' + cm.cls;
+  Sfx.rate(cm.level);
+  const before = G.total; G.total += score;
+  await Promise.all([
+    tween(before, G.total, 480, v => { hudScore.textContent = Math.round(v).toLocaleString('en-US'); }, token),
+    sleep(480),
+  ]);
+  if (token !== G.token) return;
+  hudScore.textContent = G.total.toLocaleString('en-US');
+  nextBtn.textContent = G.round >= TOTAL_ROUNDS - 1 ? '查看結果' : '下一回合';
+  nextBtn.hidden = false;
+  G.phase = 'done';
+  try { nextBtn.focus({ preventScroll: true }); } catch (err) { /* ignore */ }
+}
+
+nextBtn.addEventListener('click', () => {
+  if (G.phase !== 'done') return;
+  Sfx.click();
+  if (G.round < TOTAL_ROUNDS - 1){ G.round++; beginRound(); }
+  else finishGame();
+});
+
+/* ---------------- 指標事件（滑鼠 + 觸控） ---------------- */
+canvas.addEventListener('pointerdown', e => {
+  if (G.phase !== 'ready' || !e.isPrimary) return;
+  if (e.pointerType === 'mouse' && e.button !== 0) return;
+  e.preventDefault();
+  const p = pointerPos(e);
+  R.drag = { id: e.pointerId, x1: p.x, y1: p.y, x2: p.x, y2: p.y };
+  R.knife = { x1: p.x, y1: p.y, x2: p.x, y2: p.y, active: true };
+  try { canvas.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+});
+canvas.addEventListener('pointermove', e => {
+  const d = R.drag; if (!d || e.pointerId !== d.id) return;
+  const p = pointerPos(e);
+  d.x2 = p.x; d.y2 = p.y;
+  R.knife.x2 = p.x; R.knife.y2 = p.y;
+});
+function endDrag(e, cancelled){
+  const d = R.drag; if (!d || e.pointerId !== d.id) return;
+  R.drag = null;
+  const p = pointerPos(e);
+  if (!cancelled){ d.x2 = p.x; d.y2 = p.y; }
+  try { canvas.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+  const len = Math.hypot(d.x2 - d.x1, d.y2 - d.y1);
+  if (cancelled || len < MIN_DRAG){
+    R.knife = { x1: d.x1, y1: d.y1, x2: d.x2, y2: d.y2, active: false, t0: performance.now(), fade: 220 };
+    if (!cancelled){ Sfx.short(); toast('刀太短了，再拖長一點（至少 30px）'); }
+    return;
+  }
+  performCut(d);
+}
+canvas.addEventListener('pointerup', e => endDrag(e, false));
+canvas.addEventListener('pointercancel', e => endDrag(e, true));
+canvas.addEventListener('lostpointercapture', e => endDrag(e, true));
+canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+/* =====================================================================
+ * 結算
+ * ===================================================================== */
+const totalNum = $('totalNum');
+function finishGame(){
+  const total = G.total;
+  const ti = tierIndexFor(total);
+  const tier = TIERS[ti];
+  const prev = parseInt(store.get('best'), 10) || 0;
+  const isNew = total > prev;
+  if (isNew) store.set('best', total);
+  const best = Math.max(prev, total);
+
+  $('scEmoji').textContent = tier.emoji;
+  $('scName').textContent = tier.name;
+  $('scDesc').textContent = tier.desc;
+  $('scAvg').textContent = '約等於每刀平均誤差 ' + tier.avg;
+  $('ladder').innerHTML = TIERS.map((t, i) =>
+    `<li class="${i === ti ? 'on' : (i > ti ? 'passed' : '')}" title="${t.name}">${t.emoji}</li>`).join('');
+  $('bestRow').innerHTML =
+    `<span>最高分 <b>${best.toLocaleString('en-US')}</b></span>` +
+    (isNew ? '<span class="badge">新紀錄！</span>' : `<span>距離最高分還差 <b>${(best - total).toLocaleString('en-US')}</b> 分</span>`);
+  $('tbody').innerHTML = G.rounds.map((r, i) =>
+    `<tr><td class="rn">${i + 1}</td><td class="it"><div class="itc"><img alt="" src="${ITEMS[r.idx].src}"><span>${r.name}</span></div></td>` +
+    `<td>${r.target}</td><td>${fmt1(r.small)} : ${fmt1(r.large)}</td><td class="sc">${r.score}</td></tr>`).join('');
+  $('tfootTotal').textContent = total.toLocaleString('en-US');
+
+  showScreen('result');
+  totalNum.textContent = '0';
+  const token = ++G.token;
+  tween(0, total, 900 + total * 0.15, v => { totalNum.textContent = Math.round(v).toLocaleString('en-US'); }, token)
+    .then(() => { totalNum.textContent = total.toLocaleString('en-US'); });
+  Sfx.finale(ti);
+  if (ti <= 5) confetti(isNew ? 46 : 32); else if (isNew && ti <= 9) confetti(26);
+  renderBest();
+}
+function confetti(n){
+  const colors = ['#e4452f', '#f3b52a', '#3d9a47', '#2f7fb5', '#fff4dc', '#d9a468'];
+  for (let i = 0; i < n; i++){
+    const el = document.createElement('i');
+    el.className = 'confetti';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.background = colors[rand(colors.length)];
+    el.style.setProperty('--dx', (Math.random() * 160 - 80) + 'px');
+    el.style.setProperty('--rot', (Math.random() * 900 - 450) + 'deg');
+    el.style.animationDuration = (2.2 + Math.random() * 1.8) + 's';
+    el.style.animationDelay = (Math.random() * 0.5) + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 5000);
+  }
+}
+$('againBtn').addEventListener('click', () => { Sfx.click(); startGame(); });
+
+/* =====================================================================
+ * 開始畫面、靜音、初始化
+ * ===================================================================== */
+function renderBest(){
+  const b = parseInt(store.get('best'), 10) || 0;
+  $('startBest').textContent = b ? b.toLocaleString('en-US') : '尚無紀錄';
+}
+const muteBtn = $('muteBtn');
+function syncMute(){
+  muteBtn.setAttribute('aria-pressed', Sfx.muted ? 'true' : 'false');
+  muteBtn.setAttribute('aria-label', Sfx.muted ? '音效已關閉，按一下開啟' : '音效已開啟，按一下關閉');
+}
+muteBtn.addEventListener('click', () => { Sfx.setMuted(!Sfx.muted); syncMute(); if (!Sfx.muted) Sfx.click(); });
+syncMute();
+// 第一次使用者手勢時建立 / 恢復 AudioContext
+['pointerdown', 'keydown', 'touchstart'].forEach(ev => document.addEventListener(ev, () => Sfx.unlock(), { capture: true, passive: true }));
+
+function initDecor(){
+  const slots = [
+    { l: '3%', t: '10%', r: -14 }, { l: '9%', t: '38%', r: 10 }, { l: '4%', t: '66%', r: -6 }, { l: '14%', t: '84%', r: 16 },
+    { r2: '3%', t: '12%', r: 12 }, { r2: '9%', t: '40%', r: -10 }, { r2: '4%', t: '68%', r: 8 }, { r2: '14%', t: '85%', r: -16 },
+  ];
+  const ids = pickDistinct(slots.length);
+  $('decor').innerHTML = slots.map((s, i) =>
+    `<img alt="" src="${ITEMS[ids[i]].src}" style="top:${s.t};${s.l ? 'left:' + s.l : 'right:' + s.r2};--r:${s.r}deg;animation-delay:${(i * 0.6).toFixed(1)}s">`).join('');
+}
+
+$('startBtn').addEventListener('click', () => { Sfx.click(); startGame(); });
+$('demoA').src = ITEMS[0].src; $('demoB').src = ITEMS[0].src;
+initDecor();
+renderBest();
+const startBtn = $('startBtn');
+imagesReady.then(() => { startBtn.disabled = false; });
+
+// 測試用掛勾（唯讀偵錯介面，不影響遊戲）
+window.__cih = { G, R, RATIOS, TIERS, ITEMS, canvas, startGame, getItemData, computeCut, scoreFor, commentFor, tierIndexFor, geom, imagesReady };
+})();
+</script>
+</body>
+</html>
